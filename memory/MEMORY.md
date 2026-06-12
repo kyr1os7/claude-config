@@ -1,0 +1,14 @@
+- [Google Drive naming convention](reference_dropbox_naming.md) — 書類格納 rules for file naming and folder structure in Google Drive (在留カード, 申請書類, etc.)
+- [Cloud storage no overwrite](feedback_dropbox_no_overwrite.md) — NEVER delete or overwrite files in Google Drive/Dropbox, allow duplicates
+- [Kintone record link](feedback_kintone_link.md) — Always provide Kintone link (https://funtoco.cybozu.com/k/50/show#record=ID) at end of each task
+- [Email subject format](feedback_email_subject.md) — 業務報告メールSubject: 【業務報告】YYYY年M月D日（曜日）・SANDY PRATAMA TELAUMBANUA
+- [Email draft format](feedback_email_format.md) — 本日の業務は1イベント1行、時間表記なし、カテゴリ：内容の形式
+- [Daily interview KPI source](reference_daily_interview_kpi.md) — 日々面談実績はKintone App 98から取得（目標40件/月）
+- [Regular interview KPI source](reference_teiki_mendan_kpi.md) — 定期面談進捗はKintone App 258から取得（supportStaff, targetQuarter, 目標100%）
+- [Exclude routine events](feedback_exclude_routine.md) — 確認リマインド・タスク確認もKintone・メールから除外（Lunch等と同じ）
+- [Daily interview label](feedback_daily_interview_label.md) — 日々面談: Kintone=ビデオ面談、メール=日々面談と表記を使い分け
+- [Funtoco DNA list](reference_funtoco_dna.md) — 20項目のFuntoco DNA一覧（今週実行するDNA・今日感じたDNAで使用）
+- [Japan timezone](feedback_japan_timezone.md) — UserはJST在住、日付処理は必ずJST基準（深夜0時前後注意）
+- [Kintone apps list](reference_kintone_apps.md) — App 13/50/98/241/258の用途一覧
+- [面談予約日程 workflow](reference_mendan_yoyaku.md) — Gmail予約完了メール検索→Kintone App 13の面談実施日更新
+- [在留カード update workflow](reference_zairyu_card_update.md) — 写真→App 50更新→Dropbox保存→全リンク返却

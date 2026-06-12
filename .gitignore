@@ -1,0 +1,11 @@
+# Never commit actual credentials
+mcp.json
+
+# Runtime data
+sessions/
+telemetry/
+backups/
+shell-snapshots/
+session-env/
+.last-cleanup
+*.sha256
