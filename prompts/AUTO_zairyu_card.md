@@ -48,8 +48,10 @@ Ekstrak dari foto:
 - **在留カード番号** (nomor kartu, di pojok kanan atas/bawah)
 - **在留カード記載_許可年月日** (tanggal izin pertama kali di kartu ini)
 - **在留期限** (tanggal expire / 在留期間満了日)
-- **Alamat lengkap** (dari sisi belakang kartu)
+- **Alamat lengkap** (dari sisi belakang kartu, atau depan jika sudah tercetak)
 - **在留資格** (jenis visa: 特定技能１号, 留学, etc.)
+
+> ⚠️ **Kartu desain baru ISA**: Kartu yang menggunakan desain ISA (Immigration Services Agency) terkadang tidak menampilkan 許可年月日 dengan jelas. Lihat Rule #11 untuk cara mengisinya.
 
 ### Step 2 — Update App 50 (就労_ビザ管理)
 Field yang diupdate (bagian 支援担当):
@@ -107,3 +109,4 @@ Field yang diupdate:
 8. **Jangan delete file** di Download maupun Google Drive
 9. **App 13 取得 button**: field alamat di App 13 tidak bisa diisi manual dari API — user klik tombol `取得` sendiri setelah App 30 selesai diupdate
 10. **Bahasa komunikasi**: Indonesia
+11. **許可年月日 — kartu ISA baru**: Jika 許可年月日 tidak terbaca di kartu (desain ISA baru), dan user tidak kasih tanggal spesifik → isi dengan: **tahun = tahun saat task dikerjakan**, **bulan/hari = sama dengan 在留期間満了日**. Contoh: 在留期間満了日 = 2029-06-15 → 許可年月日 = 2026-06-15
