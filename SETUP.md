@@ -38,7 +38,7 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | hibimendan | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_hibi_mendan.md |
 | zairyucard | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_zairyu_card.md |
 | shoruikakunou | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_shorui_kakunou.md |
-| gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian_TEMPLATE.md |
+| gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian.md |
 | mendanyoyaku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_mendan_yoyaku.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
