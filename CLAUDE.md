@@ -1,7 +1,6 @@
 <!--
-⚠️ Ini config PERSONAL Sandy (gyomuhoukoku → file personal).
-   Rekan kerja JANGAN copy file ini langsung.
-   Ikuti SETUP.md sebagai gantinya (gyomuhoukoku → versi TEMPLATE).
+⚠️ Ini config personal Sandy (berisi @RTK.md & setup pribadi).
+   Rekan kerja: ikuti SETUP.md untuk setup — jangan copy file ini langsung.
 -->
 
 @RTK.md
