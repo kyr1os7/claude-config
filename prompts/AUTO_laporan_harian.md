@@ -242,13 +242,27 @@ FAX：06-7732-3748
  ーーーーーーーーーーーーーーーーーーーーーーーーーーー
 ```
 
-**PENTING — Gmail draft dibuat TANPA 宛先 (To). User isi manual.**
+**PENTING — output akhir:**
+- Gmail draft dibuat TANPA 宛先 (To) — user isi & kirim manual
+- **JANGAN tanya "mau dikirim?" / "送信しますか？"** di akhir — cukup hasilkan draft saja, user kirim sendiri di Gmail
+- **Selalu tampilkan link Kintone App 241** setelah draft: `https://funtoco.cybozu.com/k/241/show#record=ID`
 
 ---
 
 ## 【本日の業務】 — Sorting & Format Rules
 
-1. **Sort by type** — item sejenis dikelompokkan bersama (定期面談 semua, lalu Zendesk, lalu その他, dst.)
+1. **Sort by type — item sejenis WAJIB berurutan (dikelompokkan bersama).** Urutan grup:
+   1) 定期面談 (訪問/対面/オンライン) → 2) 日々面談 → 3) MTG → 4) 1on1 → 5) Zendesk対応 → 6) Kintone作業 → 7) 入国・入寮対応 → 8) その他
+
+   Dalam satu grup, semua item harus bersebelahan (jangan diselang-seling jenis lain). Contoh benar:
+   ```
+   ・Zendesk対応：在留カード受け取り案内
+   ・Kintone作業：Kintoneアプリ作成・テスト
+   ・その他：ニチイ学館シート
+   ・その他：面談記録報告確認（メディプラン）
+   ・その他：求職者案内
+   ・その他：SNS投稿（求職者探し）
+   ```
 2. **定期面談 format**:
    - Calendar ada kata `訪問` → `・訪問定期面談：会社名 FULLNAME`
    - Calendar ada kata `対面` → `・対面定期面談：会社名 FULLNAME`
@@ -303,13 +317,14 @@ FAX：06-7732-3748
 3. **Exclude dari Kintone DAN email**: 確認リマインド, タスク確認, Lunch, 移動, ごみ当番, workingLocation
 4. **日々面談** di Kintone App 241 → `ビデオ面談`, di email → `日々面談`
 5. **定期面談** → otomatis lookup nama perusahaan dari App 258
-6. **【本日の業務】** → sorted, item sejenis dikelompokkan
+6. **【本日の業務】** → sorted by type, item sejenis WAJIB berurutan (lihat urutan grup di section Sorting)
 7. **JANGAN tambah header** `お世話になっております` dan footer `よろしくお願いいたします`
 8. **JANGAN tambah 【本日のTQL詳細】** section
 9. **Signature block wajib** ada di bawah email (format persis seperti di atas)
-10. **Gmail draft TANPA 宛先** — user isi manual
+10. **Gmail draft TANPA 宛先** — user isi manual. **JANGAN tanya konfirmasi kirim** — draft saja, user kirim sendiri di Gmail
 11. **KPI %** tampilkan sampai 1 desimal (contoh: `21.4%`)
 12. **Teks Indonesia di DNA** → terjemahkan ke Jepang
 13. **Gunakan Python urllib** untuk SEMUA Kintone API — Kintone MCP ada bug (query filter diabaikan)
 14. **Bahasa komunikasi**: Indonesia
 15. **Step 0 setup**: jika `{{VARIABEL}}` belum diisi, tanya user dulu sebelum mulai
+16. **Selalu kasih link Kintone App 241** setelah draft selesai dibuat
