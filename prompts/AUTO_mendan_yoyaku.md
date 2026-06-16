@@ -49,7 +49,7 @@ Setiap user bilang **"CEK"**, jalankan workflow berikut.
 ## Workflow
 
 ### Step 1 — Cari Email Baru di Gmail
-- Cari email di `funtoco@gmail.com` dalam **24 jam terakhir**
+- Cari email di `{{EMAIL}}` dalam **24 jam terakhir**
 - Subject mengandung: `予約が完了しました: 【定期面談】`
 - Dari setiap email, ekstrak:
   - **Nama orang** (dari subject email)
