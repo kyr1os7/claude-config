@@ -30,10 +30,24 @@ Format file: jpg, jpeg, png, pdf
 
 ---
 
+## ⚙️ Step 0 — Setup Per User (WAJIB sebelum mulai)
+
+Sebelum menjalankan task apapun, tanyakan ke user jika belum diberikan:
+
+```
+Sebelum mulai, tolong isi data Anda:
+1. EMAIL    — email Funtoco Anda (akun sendiri, domain kantor — contoh: sandy@funtoco.jp)
+2. PASSWORD — password Kintone Anda
+```
+
+Setiap `{{EMAIL}}` dan `{{PASSWORD}}` di prompt ini diganti dengan nilai user.
+
+> Tip: kalau tidak mau ditanya tiap kali, simpan nilai ini di `CLAUDE.md` Anda.
+
 ## Akses Kintone
 
 - Domain: `funtoco.cybozu.com`
-- Auth header: `X-Cybozu-Authorization: <base64("sandy@funtoco.jp:PASSWORD")>`
+- Auth header: `X-Cybozu-Authorization: <base64("{{EMAIL}}:{{PASSWORD}}")>`
 - Gunakan **Kintone MCP** untuk semua operasi App 50, 30, 13
 - Semua proses di background — jangan ambil alih PC
 
