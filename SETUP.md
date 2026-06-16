@@ -37,7 +37,7 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | teikimendan | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_teiki_mendan.md |
 | hibimendan | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_hibi_mendan.md |
 | zairyucard | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_zairyu_card.md |
-| shorouikakou | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_shorui_kakunou.md |
+| shoruikakunou | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_shorui_kakunou.md |
 | gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian_TEMPLATE.md |
 | mendanyoyaku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_mendan_yoyaku.md |
 
@@ -61,7 +61,7 @@ Buka session Claude Code baru, ketik trigger word sesuai kebutuhan:
 | `teikimendan` | 定期面談記録 — input laporan interview ke Kintone |
 | `hibimendan` | 日々面談 — input dari Zendesk atau manual |
 | `zairyucard` | 在留カード — update data kartu + Google Drive |
-| `shorouikakou` | 書類格納 — rename & simpan dokumen ke Google Drive |
+| `shoruikakunou` | 書類格納 — rename & simpan dokumen ke Google Drive |
 | `gyomuhoukoku` | 業務報告 — buat laporan harian + Kintone + Gmail draft |
 | `mendanyoyaku` | 面談予約日程 — update tanggal dari email reservasi |
 | `automation` | Tampilkan semua trigger word yang tersedia |
@@ -79,7 +79,7 @@ Automation butuh koneksi MCP berikut. Setup di Claude Code masing-masing (pakai 
 | Kintone | semua automation (App 13/50/98/241/258) | ✅ Selalu |
 | Gmail | `gyomuhoukoku` (draft email) | ✅ |
 | Google Calendar | `gyomuhoukoku` (ambil event) | ✅ |
-| Google Drive | `zairyucard`, `shorouikakou` (upload dokumen) | ✅ |
+| Google Drive | `zairyucard`, `shoruikakunou` (upload dokumen) | ✅ |
 | Zendesk | `hibimendan` (mode CEK) | Opsional |
 
 Untuk Kintone, gunakan `mcp.json.template` di repo ini — ganti `YOUR_USERNAME`, `YOUR_DOMAIN`, `YOUR_EMAIL`, `YOUR_PASSWORD` dengan data Anda.
