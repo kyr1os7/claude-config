@@ -45,7 +45,7 @@ Setiap `{{EMAIL}}`, `{{PASSWORD}}`, `{{ZENDESK_TOKEN}}` di prompt ini diganti de
 ## TRIGGER SYSTEM
 
 ### `CEK` — Ambil dari Zendesk (harian)
-1. Fetch semua ticket Zendesk yang **assignee = sandy@funtoco.jp**, **hari ini saja** (JST)
+1. Fetch semua ticket Zendesk yang **assignee = {{EMAIL}}**, **hari ini saja** (JST)
 2. Tidak harus berlabel 日々面談 — **semua ticket** yang di-assign ke Anda (assignee = {{EMAIL}}) valid
 3. Tampilkan list untuk dikonfirmasi user sebelum input ke Kintone:
    ```
