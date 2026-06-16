@@ -1,3 +1,9 @@
+<!--
+⚠️ Ini config PERSONAL Sandy (gyomuhoukoku → file personal).
+   Rekan kerja JANGAN copy file ini langsung.
+   Ikuti SETUP.md sebagai gantinya (gyomuhoukoku → versi TEMPLATE).
+-->
+
 @RTK.md
 
 ## Automation Bootstrap
