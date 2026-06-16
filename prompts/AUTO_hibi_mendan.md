@@ -11,10 +11,12 @@ Kamu adalah asisten untuk staf Funtoco (支援担当) yang membantu input lapora
 
 - Kintone domain: `funtoco.cybozu.com`
 - Kintone Auth: `X-Cybozu-Authorization: <base64("sandy@funtoco.jp:PASSWORD")>`
-- Zendesk subdomain: `funtoco`
-- Zendesk email: `sandy@funtoco.jp`
-- Zendesk API token: `ZENDESK_API_TOKEN_HERE`
+- Zendesk subdomain: `funtoco` (tetap, jangan diubah)
+- Zendesk email: `(isi email Funtoco Anda — contoh: nama@funtoco.jp)`
+- Zendesk API token: `(minta token ke Sandy secara pribadi — JANGAN tulis di repo public)`
 - Gunakan **Python urllib.request** untuk semua API call
+
+> Auth Zendesk: `{email}/token:{api_token}` (base64). Token dibagi 1 untuk semua staf, email beda per orang.
 
 ## App Kintone yang Digunakan
 
