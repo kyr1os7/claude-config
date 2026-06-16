@@ -159,13 +159,17 @@ query = 'timeInterview in ("日々の面談") and 面談日 >= "2026-05-01" and 
 
 #### 定期面談 progress % (App 258)
 ```python
-# Ambil data Anda di quarter ini
-query = 'supportStaff in ("{{EMAIL}}") and targetQuarter in ("2026年Q2")'
+from datetime import datetime, timezone, timedelta
+
+# Auto-detect quarter berjalan (JST) — tidak perlu ganti manual tiap quarter
+now = datetime.now(timezone(timedelta(hours=9)))
+target_quarter = f"{now.year}年Q{(now.month - 1) // 3 + 1}"  # contoh: 2026年Q2
+
+query = f'supportStaff in ("{{EMAIL}}") and targetQuarter in ("{target_quarter}")'
 url = f'https://funtoco.cybozu.com/k/v1/records.json?app=258&query={urllib.parse.quote(query)}'
 # Hitung: jumlah 完了 / jumlah total → persentase dengan 1 desimal
 ```
 Tampilkan sampai 1 desimal (contoh: `21.4%`, bukan `21%`).
-Ganti `2026年Q2` sesuai quarter berjalan (Q1=1-3月, Q2=4-6月, Q3=7-9月, Q4=10-12月).
 
 ### Step 4 — Lookup Nama Perusahaan untuk 定期面談 (App 258)
 Untuk setiap orang yang ada 定期面談 di calendar:
