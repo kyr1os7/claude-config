@@ -140,8 +140,13 @@ query = 'timeInterview in ("日々の面談") and 面談日 >= "2026-05-01" and 
 
 #### 定期面談 progress % (App 258)
 ```python
-# Ambil data Sandy di quarter ini
-query = 'supportStaff in ("sandy@funtoco.jp") and targetQuarter in ("2026年Q2")'
+from datetime import datetime, timezone, timedelta
+
+# Auto-detect quarter berjalan (JST) — tidak perlu ganti manual tiap quarter
+now = datetime.now(timezone(timedelta(hours=9)))
+target_quarter = f"{now.year}年Q{(now.month - 1) // 3 + 1}"  # contoh: 2026年Q2
+
+query = f'supportStaff in ("sandy@funtoco.jp") and targetQuarter in ("{target_quarter}")'
 url = f'https://funtoco.cybozu.com/k/v1/records.json?app=258&query={urllib.parse.quote(query)}'
 # Hitung: jumlah 完了 / jumlah total → persentase dengan 1 desimal
 ```
