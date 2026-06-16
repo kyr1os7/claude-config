@@ -12,3 +12,5 @@
 - [Kintone apps list](reference_kintone_apps.md) — App 13/50/98/241/258の用途一覧
 - [面談予約日程 workflow](reference_mendan_yoyaku.md) — Gmail予約完了メール検索→Kintone App 13の面談実施日更新
 - [在留カード update workflow](reference_zairyu_card_update.md) — 写真→App 50更新→Dropbox保存→全リンク返却
+- [許可年月日 fill rule](feedback_zairyu_permit_date.md) — ISA新デザインカードで読めない場合：年=作業年、月日=在留期間満了日と同じ
+- [GitHub token](reference_github_token.md) — Classic PAT for kyr1os7/claude-config repo (full repo access)
