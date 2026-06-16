@@ -3,6 +3,8 @@
 - [Kintone record link](feedback_kintone_link.md) — Always provide Kintone link (https://funtoco.cybozu.com/k/50/show#record=ID) at end of each task
 - [Email subject format](feedback_email_subject.md) — 業務報告メールSubject: 【業務報告】YYYY年M月D日（曜日）・SANDY PRATAMA TELAUMBANUA
 - [Email draft format](feedback_email_format.md) — 本日の業務は1イベント1行、時間表記なし、カテゴリ：内容の形式
+- [No send confirmation](feedback_no_send_confirm.md) — ドラフト作成後に「送信しますか？」と確認しない（ユーザーが手動送信）
+- [Bahasa Indonesia](feedback_bahasa_indonesia.md) — 対話はインドネシア語、成果物（メール本文・Kintone値）は日本語のまま
 - [Daily interview KPI source](reference_daily_interview_kpi.md) — 日々面談実績はKintone App 98から取得（目標40件/月）
 - [Regular interview KPI source](reference_teiki_mendan_kpi.md) — 定期面談進捗はKintone App 258から取得（supportStaff, targetQuarter, 目標100%）
 - [Exclude routine events](feedback_exclude_routine.md) — 確認リマインド・タスク確認もKintone・メールから除外（Lunch等と同じ）
@@ -14,3 +16,4 @@
 - [在留カード update workflow](reference_zairyu_card_update.md) — 写真→App 50更新→Dropbox保存→全リンク返却
 - [許可年月日 fill rule](feedback_zairyu_permit_date.md) — ISA新デザインカードで読めない場合：年=作業年、月日=在留期間満了日と同じ
 - [GitHub token](reference_github_token.md) — Classic PAT for kyr1os7/claude-config repo (full repo access)
+- [Personal values for AUTO prompts](reference_kintone_auth.md) — LOCAL ONLY: Sandy's email/password/user ID/Zendesk token/nama untuk isi semua {{...}} placeholder di AUTO prompt (Step 0)
