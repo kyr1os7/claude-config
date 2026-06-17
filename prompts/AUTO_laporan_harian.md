@@ -33,7 +33,7 @@ Simpan nilai-nilai ini untuk dipakai di seluruh workflow di bawah. Setiap `{{VAR
 - Kintone user: `{{EMAIL}}`
 - Gunakan **Python urllib.request** untuk SEMUA Kintone API — JANGAN gunakan Kintone MCP (ada bug filter yang bikin query diabaikan)
 - Google Calendar: via Google Calendar MCP
-- Gmail: via Gmail MCP — buat draft **PLAIN TEXT** (pakai field `body` saja, JANGAN `htmlBody`), TANPA isi 宛先 (user isi manual)
+- Gmail: via Gmail MCP — isi field `body` (plain text) DAN `htmlBody` (untuk URL signature clickable, lihat Step 5), TANPA isi 宛先 (user isi manual)
 - Semua task di **background**, jangan take over PC
 
 ## App Kintone yang Digunakan
@@ -96,8 +96,8 @@ Jika user tulis angka spesifik → gunakan angka itu langsung.
 
 | Calendar event | App 241 作業内容 | Email label |
 |----------------|-----------------|-------------|
-| ビデオ面談 / 日々面談 | `ビデオ面談` | `日々面談` |
-| 定期面談（online / default） | `ビデオ面談` | `オンライン定期面談` |
+| ビデオ面談 / 日々面談 | `その他` ⚠️ | `日々面談` |
+| 定期面談（online / default） | `その他` ⚠️ | `オンライン定期面談` |
 | 定期面談（訪問 prefix） | `対面面談` | `訪問定期面談` |
 | 定期面談（対面 prefix） | `対面面談` | `対面定期面談` |
 | MTG / 会議 / 1on1研修 | `MTG` | `MTG` |
@@ -106,6 +106,9 @@ Jika user tulis angka spesifik → gunakan angka itu langsung.
 | Kintone作業 / 記録 / 確認 | `Kintone作業` | `Kintone作業` |
 | 入国対応 / 入寮 / 引越し | `入国・入寮対応・引越し対応` | `入国・入寮対応` |
 | その他すべて | `その他` | `その他` |
+
+> ⚠️ **App 241 dropdown `作業内容` — opsi VALID (per 2026-06-17):** `Zendesk対応`, `オンライン面談`, `対面面談`, `入国・入寮対応・引越し対応`, `Kintone作業`, `企業関連対応`, `MTG`, `1on1`, `その他`.
+> **`ビデオ面談` BUKAN opsi valid** (akan ditolak `CB_VA01`). Untuk 日々面談 / 定期面談 online: nilai `オンライン面談` semestinya cocok TAPI saat ini DITOLAK server (`項目名「オンライン面談」が見つかりません` — bug "言語ごとの名称" Kintone, nilai tersimpan ≠ label). **Workaround: tulis `その他`** dengan 備考 yang menjelaskan jenis面談 (mis. `Anisaさんフォローアップ（日々面談）`). Di EMAIL tetap pakai label `日々面談` / `オンライン定期面談`.
 
 #### POST ke App 241 (Python urllib)
 ```python
@@ -246,7 +249,10 @@ FAX：06-7732-3748
 - Gmail draft dibuat TANPA 宛先 (To) — user isi & kirim manual
 - **JANGAN tanya "mau dikirim?" / "送信しますか？"** di akhir — cukup hasilkan draft saja, user kirim sendiri di Gmail
 - **Selalu tampilkan link Kintone App 241** setelah draft: `https://funtoco.cybozu.com/k/241/show#record=ID`
-- **Buat draft sebagai PLAIN TEXT** — gunakan field `body` saja, JANGAN `htmlBody`. Kalau pakai HTML, Gmail membungkus URL jadi `https://www.google.com/url?q=...&source=gmail&ust=...`. Dengan plain text, URL tetap apa adanya (`https://funtoco.jp`, `https://tokuteiginouvisa-college.com/`).
+- **Handling URL signature (UPDATE 2026-06-17):** tool `create_draft` me-rewrite SEMUA string mirip-domain (di `body` MAUPUN `htmlBody`, dengan/tanpa `https://`) menjadi link redirect `https://www.google.com/url?q=<tujuan>&source=gmail&ust=...` dan menyisipkan karakter kontrol rusak `` di param `ust`. Tidak bisa dihindari. **Keputusan user: link harus CLICKABLE.** Maka:
+  - Isi **`htmlBody`** dengan `<a href="https://funtoco.jp">https://funtoco.jp</a>` dan `<a href="https://tokuteiginouvisa-college.com/">https://tokuteiginouvisa-college.com/</a>`. Anchor TEXT tampil bersih & bisa diklik; href di-wrap ke google.com/url tapi param `q=` (tujuan) selalu utuh di urutan pertama → redirect tetap mengarah ke situs yang benar.
+  - Isi juga **`body`** (plain text fallback) dengan URL pakai zero-width space (U+200B) di dalam domain: `funtoco​.jp`, `tokuteiginouvisa-college​.com` → versi plain tetap bersih tanpa wrapping.
+  - **Verifikasi** setelah create: `list_drafts` (cek `plaintextBody`) / `get_thread` FULL_CONTENT (cek `htmlBody`).
 
 ---
 
@@ -316,7 +322,7 @@ FAX：06-7732-3748
 1. **App 241: langsung simpan**, tidak perlu konfirmasi user
 2. **備考 field WAJIB diisi** — jangan kosong, isi dengan nama event/detail
 3. **Exclude dari Kintone DAN email**: 確認リマインド, タスク確認, Lunch, 移動, ごみ当番, workingLocation
-4. **日々面談** di Kintone App 241 → `ビデオ面談`, di email → `日々面談`
+4. **日々面談** di Kintone App 241 → `その他` (⚠️ `ビデオ面談`/`オンライン面談` ditolak server), di email → `日々面談`
 5. **定期面談** → otomatis lookup nama perusahaan dari App 258
 6. **【本日の業務】** → sorted by type, item sejenis WAJIB berurutan (lihat urutan grup di section Sorting)
 7. **JANGAN tambah header** `お世話になっております` dan footer `よろしくお願いいたします`
@@ -329,4 +335,4 @@ FAX：06-7732-3748
 14. **Bahasa komunikasi**: Indonesia
 15. **Step 0 setup**: jika `{{VARIABEL}}` belum diisi, tanya user dulu sebelum mulai
 16. **Selalu kasih link Kintone App 241** setelah draft selesai dibuat
-17. **Gmail draft = PLAIN TEXT** (field `body`, bukan `htmlBody`) — supaya URL tidak berubah jadi link redirect `google.com/url?q=...`
+17. **Gmail draft: isi `body` (plain text, URL pakai zero-width space) + `htmlBody` (URL `<a href>` clickable)** — tool selalu wrap URL ke `google.com/url?q=...`; pakai htmlBody supaya link tetap clickable & tujuan benar. Lihat detail di Step 5.

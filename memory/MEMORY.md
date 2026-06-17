@@ -4,7 +4,7 @@
 - [Email subject format](feedback_email_subject.md) — 業務報告メールSubject: 【業務報告】YYYY年M月D日（曜日）・SANDY PRATAMA TELAUMBANUA
 - [Email draft format](feedback_email_format.md) — 本日の業務は1イベント1行、時間表記なし、カテゴリ：内容の形式
 - [No send confirmation](feedback_no_send_confirm.md) — ドラフト作成後に「送信しますか？」と確認しない（ユーザーが手動送信）
-- [Gmail draft plain text](feedback_gmail_plain_text.md) — Gmail draftはbody(plain text)のみ、htmlBody禁止（URLがgoogle.com/urlに変換されるため）
+- [Gmail draft URL handling](feedback_gmail_plain_text.md) — 署名URLはhtmlBodyで`<a href>`使用（clickable希望）。create_draftが全URLをgoogle.com/url+破損文字に変換するがq=は無事。bodyはZWSP（funtoco​.jp）
 - [Bahasa Indonesia](feedback_bahasa_indonesia.md) — 対話はインドネシア語、成果物（メール本文・Kintone値）は日本語のまま
 - [Daily interview KPI source](reference_daily_interview_kpi.md) — 日々面談実績はKintone App 98から取得（目標40件/月）
 - [Regular interview KPI source](reference_teiki_mendan_kpi.md) — 定期面談進捗はKintone App 258から取得（supportStaff, targetQuarter, 目標100%）
