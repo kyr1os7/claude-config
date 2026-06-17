@@ -96,8 +96,9 @@ Jika user tulis angka spesifik → gunakan angka itu langsung.
 
 | Calendar event | App 241 作業内容 | Email label |
 |----------------|-----------------|-------------|
-| ビデオ面談 / 日々面談 | `その他` ⚠️ | `日々面談` |
-| 定期面談（online / default） | `その他` ⚠️ | `オンライン定期面談` |
+| ビデオ面談 / 日々面談 | `ビデオ面談` | `日々面談：(名前) / (会社名)` |
+| `【Zendesk対応】日々面談` (Zendesk + 日々面談) | `Zendesk対応` | `日々面談：(名前) / (会社名)` |
+| 定期面談（online / default） | `ビデオ面談` | `オンライン定期面談` |
 | 定期面談（訪問 prefix） | `対面面談` | `訪問定期面談` |
 | 定期面談（対面 prefix） | `対面面談` | `対面定期面談` |
 | MTG / 会議 / 1on1研修 | `MTG` | `MTG` |
@@ -107,8 +108,11 @@ Jika user tulis angka spesifik → gunakan angka itu langsung.
 | 入国対応 / 入寮 / 引越し | `入国・入寮対応・引越し対応` | `入国・入寮対応` |
 | その他すべて | `その他` | `その他` |
 
-> ⚠️ **App 241 dropdown `作業内容` — opsi VALID (per 2026-06-17):** `Zendesk対応`, `オンライン面談`, `対面面談`, `入国・入寮対応・引越し対応`, `Kintone作業`, `企業関連対応`, `MTG`, `1on1`, `その他`.
-> **`ビデオ面談` BUKAN opsi valid** (akan ditolak `CB_VA01`). Untuk 日々面談 / 定期面談 online: nilai `オンライン面談` semestinya cocok TAPI saat ini DITOLAK server (`項目名「オンライン面談」が見つかりません` — bug "言語ごとの名称" Kintone, nilai tersimpan ≠ label). **Workaround: tulis `その他`** dengan 備考 yang menjelaskan jenis面談 (mis. `Anisaさんフォローアップ（日々面談）`). Di EMAIL tetap pakai label `日々面談` / `オンライン定期面談`.
+> ⚠️ **App 241 dropdown `作業内容` — soal 面談 (penting, per 2026-06-17):**
+> - Untuk 日々面談 / 定期面談 online, nilai yang benar = **`ビデオ面談`** (tulis PERSIS ini). Sudah dipakai di ratusan record nyata.
+> - Dropdown getFormFields menampilkan label **`オンライン面談`**, tapi itu cuma label "言語ごとの名称". **JANGAN tulis `オンライン面談`** → ditolak server (`項目名「オンライン面談」が見つかりません`, `CB_VA01`). Nilai internal sebenarnya = `ビデオ面談`.
+> - 備考 = nama perusahaan (pola existing: mis. `柏原マルタマフーズ株式会社、医療法人社団恵宣会`).
+> - **Special case `【Zendesk対応】日々面談`:** Kintone 作業内容 = `Zendesk対応`, tapi di EMAIL tetap `日々面談：(名前) / (会社名)`.
 
 #### POST ke App 241 (Python urllib)
 ```python
@@ -192,7 +196,7 @@ Subject: 【業務報告】YYYY年M月D日（曜日）・{{NAMA_LENGKAP}}
 ・オンライン定期面談：会社名 FULLNAME
 ・オンライン定期面談：会社名 FULLNAME
 ・訪問定期面談：会社名 FULLNAME
-・日々面談：名前さん 内容
+・日々面談：名前さん / 会社名
 ・Zendesk対応：内容
 ・Zendesk対応
 ・MTG：内容
@@ -274,7 +278,7 @@ FAX：06-7732-3748
    - Calendar ada kata `訪問` → `・訪問定期面談：会社名 FULLNAME`
    - Calendar ada kata `対面` → `・対面定期面談：会社名 FULLNAME`
    - Default (tidak ada prefix) → `・オンライン定期面談：会社名 FULLNAME`
-3. **日々面談 format**: `・日々面談：名前さん 内容`
+3. **日々面談 format**: `・日々面談：(名前)さん / (会社名)` — apapun yang terjadi pakai format ini (name / company). Termasuk kalau event kalender ditulis `【Zendesk対応】日々面談`.
 4. **Zendesk対応 format**:
    - Tanpa detail → `・Zendesk対応` (satu kali saja, JANGAN dobel jadi `Zendesk対応：Zendesk対応`)
    - Ada detail → `・Zendesk対応：内容`
@@ -322,7 +326,7 @@ FAX：06-7732-3748
 1. **App 241: langsung simpan**, tidak perlu konfirmasi user
 2. **備考 field WAJIB diisi** — jangan kosong, isi dengan nama event/detail
 3. **Exclude dari Kintone DAN email**: 確認リマインド, タスク確認, Lunch, 移動, ごみ当番, workingLocation
-4. **日々面談** di Kintone App 241 → `その他` (⚠️ `ビデオ面談`/`オンライン面談` ditolak server), di email → `日々面談`
+4. **日々面談** di Kintone App 241 → `ビデオ面談` (⚠️ JANGAN `オンライン面談` — ditolak server; nilai internal = `ビデオ面談`), 備考 = nama perusahaan. Di email → `日々面談：(名前) / (会社名)`. Khusus event `【Zendesk対応】日々面談`: Kintone = `Zendesk対応`, email tetap `日々面談：(名前) / (会社名)`.
 5. **定期面談** → otomatis lookup nama perusahaan dari App 258
 6. **【本日の業務】** → sorted by type, item sejenis WAJIB berurutan (lihat urutan grup di section Sorting)
 7. **JANGAN tambah header** `お世話になっております` dan footer `よろしくお願いいたします`

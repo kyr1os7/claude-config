@@ -9,7 +9,7 @@
 - [Daily interview KPI source](reference_daily_interview_kpi.md) — 日々面談実績はKintone App 98から取得（目標40件/月）
 - [Regular interview KPI source](reference_teiki_mendan_kpi.md) — 定期面談進捗はKintone App 258から取得（supportStaff, targetQuarter, 目標100%）
 - [Exclude routine events](feedback_exclude_routine.md) — 確認リマインド・タスク確認もKintone・メールから除外（Lunch等と同じ）
-- [Daily interview label](feedback_daily_interview_label.md) — 日々面談: Kintone=ビデオ面談、メール=日々面談と表記を使い分け
+- [Daily interview label](feedback_daily_interview_label.md) — 日々面談: Kintone App241=ビデオ面談(オンライン面談値は書込拒否)、メール=日々面談：名前/会社名。【Zendesk対応】日々面談→KintoneはZendesk対応
 - [Funtoco DNA list](reference_funtoco_dna.md) — 20項目のFuntoco DNA一覧（今週実行するDNA・今日感じたDNAで使用）
 - [Japan timezone](feedback_japan_timezone.md) — UserはJST在住、日付処理は必ずJST基準（深夜0時前後注意）
 - [Kintone apps list](reference_kintone_apps.md) — App 13/50/98/241/258の用途一覧
