@@ -33,7 +33,7 @@ Simpan nilai-nilai ini untuk dipakai di seluruh workflow di bawah. Setiap `{{VAR
 - Kintone user: `{{EMAIL}}`
 - Gunakan **Python urllib.request** untuk SEMUA Kintone API — JANGAN gunakan Kintone MCP (ada bug filter yang bikin query diabaikan)
 - Google Calendar: via Google Calendar MCP
-- Gmail: via Gmail MCP — buat draft TANPA isi 宛先 (user isi manual)
+- Gmail: via Gmail MCP — buat draft **PLAIN TEXT** (pakai field `body` saja, JANGAN `htmlBody`), TANPA isi 宛先 (user isi manual)
 - Semua task di **background**, jangan take over PC
 
 ## App Kintone yang Digunakan
@@ -246,6 +246,7 @@ FAX：06-7732-3748
 - Gmail draft dibuat TANPA 宛先 (To) — user isi & kirim manual
 - **JANGAN tanya "mau dikirim?" / "送信しますか？"** di akhir — cukup hasilkan draft saja, user kirim sendiri di Gmail
 - **Selalu tampilkan link Kintone App 241** setelah draft: `https://funtoco.cybozu.com/k/241/show#record=ID`
+- **Buat draft sebagai PLAIN TEXT** — gunakan field `body` saja, JANGAN `htmlBody`. Kalau pakai HTML, Gmail membungkus URL jadi `https://www.google.com/url?q=...&source=gmail&ust=...`. Dengan plain text, URL tetap apa adanya (`https://funtoco.jp`, `https://tokuteiginouvisa-college.com/`).
 
 ---
 
@@ -328,3 +329,4 @@ FAX：06-7732-3748
 14. **Bahasa komunikasi**: Indonesia
 15. **Step 0 setup**: jika `{{VARIABEL}}` belum diisi, tanya user dulu sebelum mulai
 16. **Selalu kasih link Kintone App 241** setelah draft selesai dibuat
+17. **Gmail draft = PLAIN TEXT** (field `body`, bukan `htmlBody`) — supaya URL tidak berubah jadi link redirect `google.com/url?q=...`
