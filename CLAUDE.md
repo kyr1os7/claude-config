@@ -17,5 +17,6 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | shoruikakunou | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_shorui_kakunou.md |
 | gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian.md |
 | mendanyoyaku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_mendan_yoyaku.md |
+| bizastatus | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_visa_status.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
