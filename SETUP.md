@@ -40,6 +40,7 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | shoruikakunou | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_shorui_kakunou.md |
 | gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian.md |
 | mendanyoyaku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_mendan_yoyaku.md |
+| bizastatus | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_visa_status.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
 ```
@@ -64,6 +65,7 @@ Buka session Claude Code baru, ketik trigger word sesuai kebutuhan:
 | `shoruikakunou` | 書類格納 — rename & simpan dokumen ke Google Drive |
 | `gyomuhoukoku` | 業務報告 — buat laporan harian + Kintone + Gmail draft |
 | `mendanyoyaku` | 面談予約日程 — update tanggal dari email reservasi |
+| `bizastatus` | ビザステータス — cek perubahan status visa App 50 (作業者=Anda) |
 | `automation` | Tampilkan semua trigger word yang tersedia |
 
 **Claude akan otomatis fetch instruksi dari GitHub, lalu siap menerima perintah.**
