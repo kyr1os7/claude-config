@@ -82,7 +82,42 @@ Automation butuh koneksi MCP berikut. Setup di Claude Code masing-masing (pakai 
 | Google Drive | `zairyucard`, `shoruikakunou` (upload dokumen) | ✅ |
 | Zendesk | `hibimendan` (mode CEK) | Opsional |
 
-Untuk Kintone, gunakan `mcp.json.template` di repo ini — ganti `YOUR_USERNAME`, `YOUR_DOMAIN`, `YOUR_EMAIL`, `YOUR_PASSWORD` dengan data Anda.
+### Kintone — 2 metode akses (keduanya pakai email + password yang sama)
+
+**A. Python urllib + header auth** — untuk `gyomuhoukoku`, `hibimendan`, `teikimendan`, `mendanyoyaku`, `shoruikakunou`
+Tidak perlu install MCP. Prompt membangun header sendiri:
+- Domain: `funtoco.cybozu.com`
+- Auth: `X-Cybozu-Authorization: <base64("email:password")>` (Basic auth)
+- Pakai **Python `urllib.request`** (JANGAN plain curl)
+
+Cukup sediakan EMAIL + PASSWORD (ditanya otomatis di Step 0).
+
+**B. Kintone MCP server** — untuk `zairyucard`
+Repo resmi: https://github.com/kintone/mcp-server
+
+Install (Node.js diperlukan):
+```bash
+npm install -g @kintone/mcp-server
+```
+
+Tambahkan ke MCP config Claude Code Anda:
+```json
+{
+  "mcpServers": {
+    "kintone": {
+      "command": "npx",
+      "args": ["-y", "@kintone/mcp-server"],
+      "env": {
+        "KINTONE_BASE_URL": "https://funtoco.cybozu.com",
+        "KINTONE_USERNAME": "email@funtoco.jp",
+        "KINTONE_PASSWORD": "password-anda"
+      }
+    }
+  }
+}
+```
+Auth Kintone MCP mendukung `KINTONE_USERNAME`/`KINTONE_PASSWORD` ATAU `KINTONE_API_TOKEN`.
+Template siap-pakai ada di `mcp.json.template` (repo ini) — ganti nilai env dengan data Anda.
 
 ---
 
