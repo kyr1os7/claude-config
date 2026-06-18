@@ -70,37 +70,43 @@ Buka session Claude Code baru, ketik trigger word sesuai kebutuhan:
 
 ---
 
-## Setup MCP (wajib untuk automation)
+## Setup MCP
 
-Automation butuh koneksi MCP berikut. Setup di Claude Code masing-masing (pakai kredensial Anda sendiri):
+Automation pakai koneksi MCP berikut. Setup di Claude Code masing-masing (pakai kredensial sendiri):
 
 | MCP | Dipakai untuk | Wajib? |
 |-----|---------------|--------|
-| Kintone | semua automation (App 13/50/98/241/258) | ✅ Selalu |
 | Gmail | `gyomuhoukoku` (draft email) | ✅ |
 | Google Calendar | `gyomuhoukoku` (ambil event) | ✅ |
 | Google Drive | `zairyucard`, `shoruikakunou` (upload dokumen) | ✅ |
 | Zendesk | `hibimendan` (mode CEK) | Opsional |
+| Kintone MCP | bikin/ubah **APP** Kintone (development) — BUKAN untuk automation | Opsional |
 
-### Kintone — 2 metode akses (keduanya pakai email + password yang sama)
+> **Penting soal Kintone:** SEMUA automation (baca/tulis record + KPI) pakai **Python urllib + email/password**, jadi **TIDAK butuh Kintone MCP**. Kintone MCP hanya perlu kalau Anda mau **bikin/ubah app Kintone** (development).
 
-**A. Python urllib + header auth** — untuk `gyomuhoukoku`, `hibimendan`, `teikimendan`, `mendanyoyaku`, `shoruikakunou`
-Tidak perlu install MCP. Prompt membangun header sendiri:
+### Kintone akses record (untuk automation) — Python urllib
+
+Tidak perlu install apa-apa. Prompt membangun request sendiri:
 - Domain: `funtoco.cybozu.com`
 - Auth: `X-Cybozu-Authorization: <base64("email:password")>` (Basic auth)
 - Pakai **Python `urllib.request`** (JANGAN plain curl)
 
 Cukup sediakan EMAIL + PASSWORD (ditanya otomatis di Step 0).
 
-**B. Kintone MCP server** — untuk `zairyucard`
-Repo resmi: https://github.com/kintone/mcp-server
+### Kintone MCP (opsional — untuk development app)
 
-Install (Node.js diperlukan):
+Hanya perlu kalau Anda mau bikin/ubah app, field, layout, atau deploy app Kintone.
+Repo resmi: https://github.com/kintone/mcp-server — package npm: `@kintone/mcp-server`.
+
+**1. Install (perlu Node.js):**
 ```bash
 npm install -g @kintone/mcp-server
 ```
+Ini membuat binary bernama `kintone-mcp-server`.
 
-Tambahkan ke MCP config Claude Code Anda:
+**2. Tambahkan ke MCP config** (`~/.claude/mcp.json`). Dua cara:
+
+Cara A — npx (paling simpel & portable):
 ```json
 {
   "mcpServers": {
@@ -116,8 +122,26 @@ Tambahkan ke MCP config Claude Code Anda:
   }
 }
 ```
+
+Cara B — global install + path (yang dipakai Sandy sekarang):
+```json
+{
+  "mcpServers": {
+    "kintone": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["<HOME>/.npm-global/bin/kintone-mcp-server"],
+      "env": {
+        "KINTONE_BASE_URL": "https://funtoco.cybozu.com",
+        "KINTONE_USERNAME": "email@funtoco.jp",
+        "KINTONE_PASSWORD": "password-anda"
+      }
+    }
+  }
+}
+```
 Auth Kintone MCP mendukung `KINTONE_USERNAME`/`KINTONE_PASSWORD` ATAU `KINTONE_API_TOKEN`.
-Template siap-pakai ada di `mcp.json.template` (repo ini) — ganti nilai env dengan data Anda.
+Template siap-pakai: `mcp.json.template` (repo ini).
 
 ---
 
