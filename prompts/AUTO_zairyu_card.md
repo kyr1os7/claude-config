@@ -48,8 +48,33 @@ Setiap `{{EMAIL}}` dan `{{PASSWORD}}` di prompt ini diganti dengan nilai user.
 
 - Domain: `funtoco.cybozu.com`
 - Auth header: `X-Cybozu-Authorization: <base64("{{EMAIL}}:{{PASSWORD}}")>`
-- Gunakan **Kintone MCP** untuk semua operasi App 50, 30, 13
+- Gunakan **Python urllib.request** untuk semua operasi Kintone (App 50, 30, 13) — JANGAN Kintone MCP, JANGAN plain curl
 - Semua proses di background — jangan ambil alih PC
+
+### Pola akses Kintone (Python urllib)
+
+Cari record by nama (sesuaikan field nama per app):
+```python
+import urllib.request, json, base64, urllib.parse
+auth = base64.b64encode(b'{{EMAIL}}:{{PASSWORD}}').decode()
+query = f'fullName like "{nama}"'
+url = f'https://funtoco.cybozu.com/k/v1/records.json?app=50&query={urllib.parse.quote(query)}'
+req = urllib.request.Request(url, headers={'X-Cybozu-Authorization': auth})
+records = json.loads(urllib.request.urlopen(req).read())['records']
+```
+
+Update record (PUT):
+```python
+payload = json.dumps({
+    'app': 50, 'id': RECORD_ID,
+    'record': { 'FIELD_CODE': {'value': 'NILAI'} }
+}).encode()
+req = urllib.request.Request('https://funtoco.cybozu.com/k/v1/record.json',
+    data=payload,
+    headers={'X-Cybozu-Authorization': auth, 'Content-Type': 'application/json'},
+    method='PUT')
+urllib.request.urlopen(req)
+```
 
 ---
 
@@ -187,6 +212,7 @@ Google Drive:
 4. **Google Drive** — no overwrite, duplikat boleh, upload via MCP
 5. **Semua 3 Kintone link** wajib ditampilkan di laporan akhir
 6. **Background process** — jangan ambil alih PC user
+7. **Kintone diakses via Python urllib** (bukan Kintone MCP). **Google Drive tetap via MCP** (Step 5)
 
 ---
 
