@@ -1,12 +1,11 @@
 {
   "mcpServers": {
     "kintone": {
-      "type": "stdio",
-      "command": "/usr/local/bin/node",
-      "args": ["/Users/YOUR_USERNAME/.npm-global/bin/kintone-mcp-server"],
+      "command": "npx",
+      "args": ["-y", "@kintone/mcp-server"],
       "env": {
-        "KINTONE_BASE_URL": "https://YOUR_DOMAIN.cybozu.com",
-        "KINTONE_USERNAME": "YOUR_EMAIL@domain.com",
+        "KINTONE_BASE_URL": "https://funtoco.cybozu.com",
+        "KINTONE_USERNAME": "YOUR_EMAIL@funtoco.jp",
         "KINTONE_PASSWORD": "YOUR_PASSWORD"
       }
     }
