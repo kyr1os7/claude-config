@@ -103,10 +103,16 @@ Jika user tulis angka spesifik → gunakan angka itu langsung.
 | 定期面談（対面 prefix） | `対面面談` | `対面定期面談` |
 | MTG / 会議 / 1on1研修 | `MTG` | `MTG` |
 | 1on1 | `1on1` | `1on1` |
-| Zendesk対応 | `Zendesk対応` | `Zendesk対応` |
-| Kintone作業 / 記録 / 確認 | `Kintone作業` | `Kintone作業` |
+| Zendesk対応 / 支援者向け案内・フォロー・手続き対応 | `Zendesk対応` | `Zendesk対応：内容` |
+| Kintone作業 / ビザ管理確認 | `Kintone作業` | `Kintone作業` |
 | 入国対応 / 入寮 / 引越し | `入国・入寮対応・引越し対応` | `入国・入寮対応` |
-| その他すべて | `その他` | `その他` |
+| その他すべて（社内事務・記録作成 含む） | `その他` | `その他` |
+
+> 📌 **Aturan kategori (penting, per 2026-06-22):**
+> - **支援者（外国人労働者）向けの案内・フォロー・手続き対応 → `Zendesk対応`** (ditangani via Zendesk). Walau judul kalender 【作業】/【更新申請】, kalau isinya 案内 ke pekerja → `Zendesk対応`. Contoh: 資格変更案内、更新申請案内、FunEduフォローアップ、ライフライン/自転車保険案内.
+> - **社内事務・記録作成 → `その他`**. Contoh: 来客アポ設定・メール案内（来客/社内向け）、面談記録作成・退職面談記録作成（※BUKAN `Kintone作業`）.
+> - Jangan menilai hanya dari kata "案内" (来客メール案内 = `その他`). Lihat penerima & sifatnya: pekerja+手続き → Zendesk; internal/記録 → その他.
+> - ⚠️ `企業関連対応` adalah opsi yang DITOLAK server (masalah 言語ごとの名称, sama seperti オンライン面談). Untuk クレーム対応 dll pakai `その他` di App 241 (email boleh tulis `企業関連対応：...`).
 
 > ⚠️ **App 241 dropdown `作業内容` — soal 面談 (penting, per 2026-06-17):**
 > - Untuk 日々面談 / 定期面談 online, nilai yang benar = **`ビデオ面談`** (tulis PERSIS ini). Sudah dipakai di ratusan record nyata.
