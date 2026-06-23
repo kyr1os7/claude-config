@@ -19,3 +19,4 @@
 - [許可年月日 fill rule](feedback_zairyu_permit_date.md) — ISA新デザインカードで読めない場合：年=作業年、月日=在留期間満了日と同じ
 - [GitHub token](reference_github_token.md) — Classic PAT for kyr1os7/claude-config repo (full repo access)
 - [Personal values for AUTO prompts](reference_kintone_auth.md) — LOCAL ONLY: Sandy's email/password/user ID/Zendesk token/nama untuk isi semua {{...}} placeholder di AUTO prompt (Step 0)
+- [日々面談 workflow (hibimendan)](reference_hibi_mendan_workflow.md) — CEK/MANUAL trigger, targetQuarter auto-clear fix, FunBase表示 default=pending(営業担当確認), tableStorageDaily JSON format
