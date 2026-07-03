@@ -214,4 +214,8 @@ Jika user menyebut **"special case, tidak perlu copy ke google drive"**:
 10. **Background task**: jangan take over computer user
 11. **Bahasa komunikasi**: Indonesia
 12. **Kintone memo R6 non-pajak**: tulis dalam bahasa Jepang
+13. **Jika upload Google Drive gagal** (apapun alasannya — auth error, size terlalu besar, MCP error, dll): **JANGAN buang waktu coba-coba fix**. Langsung kirim:
+    - Link folder Google Drive tujuan (dari hasil `search_files` MCP)
+    - Path lokal file yang sudah di-rename (biasanya di `~/Downloads/NAMA/` atau scratchpad)
+    - Biarkan user drag & drop manual ke Drive
 
