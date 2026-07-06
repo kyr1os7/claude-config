@@ -45,10 +45,12 @@ Setiap `{{EMAIL}}` dan `{{PASSWORD}}` di prompt ini diganti dengan nilai user.
 Proses otomatis penuh:
 1. Cari file di Google Drive **Meet Recordings** (cloud) sesuai nama → ambil **file terbaru** jika ada lebih dari satu
 2. Baca isi gdoc (Gemini Notes) via Google Docs API
-3. Pindahkan video dari Meet Recordings ke: `共有ドライブ → 定期面談記録管理用 → {quarter_app98}` (auto-detect — lihat section targetQuarter; contoh saat ini: `2026年第2四半期`
-   - Rename video: `【企業名】フルネーム`
+3. Copy video dari Meet Recordings ke: `共有ドライブ → 定期面談記録管理用 → {quarter_app98}` (auto-detect — lihat section targetQuarter)
+   - Rename video: `【定期面談】フルネーム - YYYY-MM-DD`
+   - Original tetap di tempat asal (jangan hapus — user hapus manual)
 4. Jalankan 4-Step Workflow (lihat bawah)
-5. Masukkan **link video** ke field yang sesuai di App 258
+5. Masukkan **link video** (copied file) ke field `リンク` di App 98
+6. Di App 258: centang `録画保存（支援）` → field code `supportRecordSaved: ["保存済み"]`
 
 ### `MANUAL (NAMA)` — Interview 対面/訪問 (tanpa file Google Meet)
 - User paste isi laporan langsung di chat
@@ -60,9 +62,9 @@ Proses otomatis penuh:
 
 ## 4-Step Workflow Wajib
 
-### Step 1 — Cari data pekerja di App 13
-Query by nama, ambil field:
-`HRID`, `$id` (=WOID), `furigana`, `COID`, `OFID`, `companyName`, `hireDate`, `CompanyManagerUser` (=salesName), `workingStatus`
+### Step 1 — Cari data pekerja di App 258
+Query by nama dengan `targetQuarter = quarter_app258`, ambil field:
+`HRID`, `WOID`, `COID`, `companyName`
 
 ### Step 2 — Baca konten laporan
 - **MENDAN**: baca gdoc dari Google Drive cloud
@@ -72,37 +74,42 @@ Query by nama, ambil field:
 ### Step 3 — POST record baru ke App 98
 ```json
 {
-  "HRID": "...", "WOID": "...", "COID": "...", "OFID": "...",
-  "personalName": "...", "nickName": "...(furigana)",
-  "companyName": "...", "hireDate": "...",
+  "HRID": "...", "WOID": "...", "COID": "...",
   "interviewDate": "YYYY-MM-DD",
   "interviewMethod": ["オンラインMTG"],
   "interviewPlace": "Web",
   "timeInterview": "定期面談",
-  "targetQuarter": "<quarter_app98 — auto-detect, JANGAN hardcode>",
-  "Time":   "HH:MM",
-  "Time_0": "HH:MM",
-  "funtocoStaff": [{"code": "{{EMAIL}}"}],
-  "supportName":  [{"code": "{{EMAIL}}"}],
-  "salesName":    [{"code": "<CompanyManagerUser>"}],
-  "テンプレート": "支援担当",
+  "targetQuarter": "<quarter_app98 — auto-detect dari tanggal interview>",
+  "personInCharge": "支援担当",
+  "supportName": [{"code": "{{EMAIL}}"}],
   "企業提出用レポート": "<isi laporan>"
 }
 ```
-- `Time`: start time → **floor** per 30 menit (misal 15:25 → 15:00)
-- `Time_0`: end time → **ceil** per 30 menit (misal 15:54 → 16:00)
-- `テンプレート`: **selalu "支援担当"** tanpa kecuali
-- `targetQuarter`: pakai `quarter_app98` (auto-detect, lihat section targetQuarter) — JANGAN hardcode
+- MENDAN tambahkan: `"リンク": "https://drive.google.com/file/d/FILE_ID/view"`
+- MANUAL tambahkan: `"interviewMethod": ["対面"]`, `"interviewPlace": "訪問"`
+- `personInCharge`: **selalu "支援担当"** tanpa kecuali
+- `targetQuarter`: hitung dari **tanggal interview** (BUKAN hari ini) — lihat section targetQuarter
 
 ### Step 4 — UPDATE record App 258 (WAJIB — tanpa ini tidak terhitung di dashboard)
 1. Query App 258: `WOID = <nomor> AND targetQuarter in ("{quarter_app258}")`
-2. PUT update field berikut (semua wajib diisi):
+2. **CEK DULU** isi field sebelum update — JANGAN overwrite/kosongkan data yang sudah ada
+3. PUT update field berikut:
    ```json
    {
      "supportInterviewDate": "YYYY-MM-DD",
-     "supportInterviewDone": ["完了"],
-     "面談実施日（支援）": "YYYY-MM-DD",
-     "面談完了（支援）": "完了"
+     "supportInterviewDone": ["完了"]
+   }
+   ```
+   Khusus MENDAN (ada video), tambahkan:
+   ```json
+   {
+     "supportRecordSaved": ["保存済み"]
+   }
+   ```
+   Khusus MANUAL, tambahkan:
+   ```json
+   {
+     "supportMode": "訪問(必須)"
    }
    ```
 
@@ -151,16 +158,16 @@ Format ini WAJIB diikuti — nomor seksi, header 【】, bullet ・, dan blank l
 
 ---
 
-## targetQuarter — Format BERBEDA antar App (AUTO-DETECT)
+## targetQuarter — Format BERBEDA antar App (AUTO-DETECT dari tanggal interview)
 
-**JANGAN hardcode quarter.** Hitung dari tanggal hari ini (JST):
+**JANGAN hardcode quarter.** Hitung dari **tanggal interview** (bukan hari ini):
 
 ```python
-from datetime import datetime, timezone, timedelta
-now = datetime.now(timezone(timedelta(hours=9)))  # JST
-q = (now.month - 1) // 3 + 1
-quarter_app98  = f"{now.year}年第{q}四半期"   # App 98  → contoh: 2026年第2四半期
-quarter_app258 = f"{now.year}年Q{q}"          # App 258 → contoh: 2026年Q2
+from datetime import datetime
+interview_date = datetime.strptime("YYYY-MM-DD", "%Y-%m-%d")
+q = (interview_date.month - 1) // 3 + 1
+quarter_app98  = f"{interview_date.year}年第{q}四半期"   # App 98  → contoh: 2026年第2四半期
+quarter_app258 = f"{interview_date.year}年Q{q}"          # App 258 → contoh: 2026年Q2
 ```
 
 | App | Format | Variabel | Contoh |
@@ -180,6 +187,9 @@ Q1=1-3月, Q2=4-6月, Q3=7-9月, Q4=10-12月
 4. **Multiple gdoc files** → ambil yang **terbaru**
 5. **Google Drive**: selalu akses cloud, bukan folder lokal/mirror
 6. **Bahasa**: gunakan **Indonesia** untuk semua komunikasi
-7. **Video link**: masukkan ke App 258 setelah video dipindah
+7. **Video link**: masukkan ke field `リンク` App 98 setelah video di-copy
 8. **Jika tidak ada video** (special case): skip semua step video, kerjakan Kintone seperti biasa
 9. **Nama pekerja**: pakai nama dari instruksi user, bukan dari dokumen Gemini
+10. **App 258 field codes yang benar**: `supportInterviewDate`, `supportInterviewDone`, `supportRecordSaved` — BUKAN nama display Jepang
+11. **Sebelum update App 258**: CEK ISI RECORD DULU — JANGAN overwrite/kosongkan field yang sudah ada nilainya tanpa konfirmasi user
+12. **targetQuarter**: hitung dari tanggal **interview**, bukan tanggal hari ini
