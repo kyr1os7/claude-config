@@ -46,7 +46,7 @@ Proses otomatis penuh:
 1. Cari file di Google Drive **Meet Recordings** (cloud) sesuai nama → ambil **file terbaru** jika ada lebih dari satu
 2. Baca isi gdoc (Gemini Notes) via Google Docs API
 3. Copy video dari Meet Recordings ke: `共有ドライブ → 定期面談記録管理用 → {quarter_app98}` (auto-detect — lihat section targetQuarter)
-   - Rename video: `【定期面談】フルネーム - YYYY-MM-DD`
+   - Rename video: `【企業名】フルネーム` (contoh: `【医療法人宝山会】ANUGRA MASARRANG LOLOANGIN`)
    - Original tetap di tempat asal (jangan hapus — user hapus manual)
 4. Jalankan 4-Step Workflow (lihat bawah)
 5. Masukkan **link video** (copied file) ke field `リンク` di App 98
@@ -193,3 +193,5 @@ Q1=1-3月, Q2=4-6月, Q3=7-9月, Q4=10-12月
 10. **App 258 field codes yang benar**: `supportInterviewDate`, `supportInterviewDone`, `supportRecordSaved` — BUKAN nama display Jepang
 11. **Sebelum update App 258**: CEK ISI RECORD DULU — JANGAN overwrite/kosongkan field yang sudah ada nilainya tanpa konfirmasi user
 12. **targetQuarter**: hitung dari tanggal **interview**, bukan tanggal hari ini
+13. **Format nama video**: `【企業名】フルネーム` — BUKAN `【定期面談】...` dan BUKAN include tanggal
+14. **Folder video**: tentukan berdasarkan **tanggal interview** (bukan hari ini) — Q3=Jul-Sep → folder 2026年第3四半期
