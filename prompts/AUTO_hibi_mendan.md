@@ -134,6 +134,15 @@ Urutan kerja yang benar:
 - **MANUAL**: rangkum soudan dari bahasa Indonesia ke Jepang
 - Pilih `chu` (中項目) yang paling cocok dengan isi soudan
 
+### ⚠️ Gaya bahasa 内容 (語尾スタイル) — berlaku mulai 2026-07
+
+Isi `notes` / `内容` **dibaca oleh pihak kaisha (client)**, jadi harus rapi & sopan tapi ringkas:
+- **HINDARI** `〜した。` (bentuk plain, terkesan datar/blak-blakan) **DAN** `です・ます`.
+- **Aksi yang sudah dilakukan Funtoco** → akhiri dengan **`〜済み`**: `案内済み`・`説明済み`・`確認済み`・`対応済み`・`サポート済み`.
+- **Kalimat konteks/situasi** → **体言止め** (noun-ending, tanpa です・ます): `〜について相談あり`・`〜について質問あり`・`〜の依頼あり`.
+- Contoh: `国民年金の免除手続きの方法について案内済み。記入が必要な書類と記入方法について説明済み。`
+- Record lama tidak perlu diubah, kecuali user minta spesifik.
+
 ### 対象四半期 Logic
 | Bulan 面談日 | 対象四半期 |
 |-------------|-----------|
