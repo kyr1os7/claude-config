@@ -166,9 +166,23 @@ Keterangan:
 
 ### Target Folder di Google Drive
 
+Struktur folder per orang:
 ```
-共有ドライブ / 社内ファイルサーバ / 5.登録人材 / 登A001〜[nomor] / 登A000 / フルネーム / 呼び名
+PE-XXXX : FULLNAME : 呼び名/
+├── 1.申請書類1回目/
+│   └── 4.在留カード/   ← ⚠️ BUAT DI SINI (dalam 申請書類X回目 aktif)
+├── 1.申請書類2回目/
+│   └── 4.在留カード/   ← ⚠️ BUAT DI SINI (dalam 申請書類X回目 aktif)
+├── 2.日本語・技能実習・特定技能試験合格証明書/
+├── 3.パスポート/
+└── 4.OLD/
 ```
+
+**⚠️ Penting:** Folder `4.在留カード` dibuat **di dalam** folder `1.申請書類X回目` yang aktif (sesuai回数), **BUKAN** di root folder orang.
+
+Cara menentukan 申請書類X回目 aktif:
+- Hitung folder `1.申請書類X回目` yang ada (kecuali yang ada di dalam `4.OLD`)
+- Folder yang paling besar nomornya = folder aktif untuk回数 saat ini
 
 ### Prosedur Upload
 
@@ -188,31 +202,46 @@ Keterangan:
 
 ## Laporan Akhir
 
-Setelah semua step selesai, tampilkan summary:
+Setelah semua step selesai, tampilkan summary dalam format **tabel** untuk semua App.  
+App yang tidak ada perubahan tetap ditulis dengan keterangan "変更なし".
 
 ```
-✓ [NAMA LENGKAP] — 在留カード update selesai
+✓ [NAMA LENGKAP] (PE-XXXX) — 在留カード update selesai
+
+| App | Field | Sebelum | Sesudah |
+|-----|-------|---------|---------|
+| App 50 #ID | residenceCardNo | (kosong) | LJ12345678EA |
+| App 50 #ID | residenceCardPermitDate | (kosong) | 2026-08-06 |
+| App 50 #ID | residenceCardExpirationDate | (kosong) | 2027-08-06 |
+| App 30 #ID | — | — | 変更なし |
+| App 13 #ID | — | — | 変更なし |
+
+File rename:
+• ［在留カード表 : 特定技能１号X回目］FULLNAME : 呼び名.jpg
+• ［在留カード裏 : 特定技能１号X回目］FULLNAME : 呼び名.jpg
+
+Google Drive (4.在留カード dalam 申請書類X回目):
+• [link folder]
 
 Kintone Links:
 • App 50: https://funtoco.cybozu.com/k/50/show#record=XX
 • App 30: https://funtoco.cybozu.com/k/30/show#record=XX
 • App 13: https://funtoco.cybozu.com/k/13/show#record=XX
-
-Google Drive:
-• [nama file] → [link]
 ```
 
 ---
 
 ## Aturan Penting (Ringkasan)
 
-1. **Alamat** — ikuti foto kartu jika berbeda dengan data lama
+1. **Alamat** — ikuti foto kartu jika berbeda dengan data lama; jika Kintone lebih detail (misal ada nomor unit), pertahankan Kintone
 2. **Tanggal akhir** = 5 tahun setelah 許可年月日 (bukan 10 tahun)
 3. **ISA card baru** — 許可年月日 tidak terbaca → tahun=sekarang, bulan/hari=sama expire
 4. **Google Drive** — no overwrite, duplikat boleh, upload via MCP
 5. **Semua 3 Kintone link** wajib ditampilkan di laporan akhir
 6. **Background process** — jangan ambil alih PC user
 7. **Kintone diakses via Python urllib** (bukan Kintone MCP). **Google Drive tetap via MCP** (Step 5)
+8. **Laporan** — selalu tampilkan tabel perubahan; semua App (50, 30, 13) wajib tercantum; yang tidak berubah tulis "変更なし"
+9. **Folder 4.在留カード** — buat di **dalam** folder `1.申請書類X回目` aktif, BUKAN di root folder orang
 
 ---
 
