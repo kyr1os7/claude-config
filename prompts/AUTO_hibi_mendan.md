@@ -143,6 +143,17 @@ Isi `notes` / `内容` **dibaca oleh pihak kaisha (client)**, jadi harus rapi & 
 - Contoh: `国民年金の免除手続きの方法について案内済み。記入が必要な書類と記入方法について説明済み。`
 - Record lama tidak perlu diubah, kecuali user minta spesifik.
 
+### ⚠️ Format 内容 (【subject】prefix) — berlaku mulai 2026-07-13
+
+Awali isi `notes` / `内容` dengan **judul dalam kurung 【】** lalu deskripsi:
+
+**`【<subject>】<deskripsi>`**
+
+- **Subject** = 件名 ticket Zendesk (untuk `CEK`) atau ringkasan topik singkat (untuk `MANUAL`).
+- Deskripsi tetap pakai gaya `〜済み` / `体言止め` di atas.
+- Contoh: `【新在留カード受け取り】書類を送付いただき確認済み。申請受付番号について案内済み。`
+- Berlaku untuk `notes` (di dalam JSON) DAN field flat `tableStorageDaily_内容`.
+
 ### 対象四半期 Logic
 | Bulan 面談日 | 対象四半期 |
 |-------------|-----------|
