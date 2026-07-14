@@ -189,7 +189,7 @@ Untuk setiap orang yang ada 定期面談 di calendar:
 query = f'workerName like "{nama}"'
 url = f'https://funtoco.cybozu.com/k/v1/records.json?app=258&query={urllib.parse.quote(query)}&fields[0]=workerName&fields[1]=companyName'
 ```
-Format di email: `定期面談種類：会社名 FULLNAME`
+Format di email: `定期面談種類：会社名 / FULLNAME` (会社名 dulu, `/`, lalu nama support recipient HURUF KAPITAL semua)
 
 ### Step 5 — Buat Gmail Draft
 
@@ -199,9 +199,9 @@ Format lengkap (ikuti PERSIS, jangan tambah/kurangi):
 Subject: 【業務報告】YYYY年M月D日（曜日）・{{NAMA_LENGKAP}}
 
 【本日の業務】
-・オンライン定期面談：会社名 FULLNAME
-・オンライン定期面談：会社名 FULLNAME
-・訪問定期面談：会社名 FULLNAME
+・オンライン定期面談：会社名 / FULLNAME
+・オンライン定期面談：会社名 / FULLNAME
+・訪問定期面談：会社名 / FULLNAME
 ・日々面談：名前さん / 会社名
 ・Zendesk対応：内容
 ・Zendesk対応
@@ -280,10 +280,12 @@ FAX：06-7732-3748
    ・その他：求職者案内
    ・その他：SNS投稿（求職者探し）
    ```
-2. **定期面談 format**:
-   - Calendar ada kata `訪問` → `・訪問定期面談：会社名 FULLNAME`
-   - Calendar ada kata `対面` → `・対面定期面談：会社名 FULLNAME`
-   - Default (tidak ada prefix) → `・オンライン定期面談：会社名 FULLNAME`
+2. **定期面談 format** (2026-07-14 update): **会社名 dulu, `/`, lalu nama support recipient HURUF KAPITAL SEMUA**.
+   - Calendar ada kata `訪問` → `・訪問定期面談：会社名 / FULLNAME`
+   - Calendar ada kata `対面` → `・対面定期面談：会社名 / FULLNAME`
+   - Default (tidak ada prefix) → `・オンライン定期面談：会社名 / FULLNAME`
+   - Contoh: `・オンライン定期面談：ヤマト福祉会 / OOH NUROHMAH`, `・オンライン定期面談：Jiseikai Roman Hills / RUDY GUNAWAN MAILOOR`
+   - ⚠️ Beda urutan dengan 日々面談 (yang name/company). 定期面談 = 会社名/NAMA(kapital); 日々面談 = 名前/会社名.
 3. **日々面談 format**: `・日々面談：(名前)さん / (会社名)` — apapun yang terjadi pakai format ini (name / company). Termasuk kalau event kalender ditulis `【Zendesk対応】日々面談`.
 4. **Zendesk対応 format**:
    - Tanpa detail → `・Zendesk対応` (satu kali saja, JANGAN dobel jadi `Zendesk対応：Zendesk対応`)
