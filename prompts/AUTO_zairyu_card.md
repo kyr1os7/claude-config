@@ -125,10 +125,19 @@ Contoh: 在留期間満了日 = 2029-06-15 → 許可年月日 = **2026-06-15**
 |---|---|
 | 住所 | Alamat lengkap dari kartu (prioritaskan foto kartu jika berbeda data lama) |
 | 郵便番号 | Kode pos |
-| 許可年月日 / 在留開始日 | Tanggal izin awal |
-| 在留終了日 / 期限日 | **5 tahun** setelah 許可年月日 (BUKAN 10 tahun) |
+| 初回許可された日 | Tanggal izin pertama kali (lihat aturan di bawah) |
+| 終了予定日 | **5 tahun** setelah 初回許可された日 (BUKAN 10 tahun) |
 
-**Contoh tanggal akhir:** 許可年月日 = 2026-06-15 → 期限日 = **2031-06-15**
+**Contoh:** 初回許可された日 = 2025-07-23 → 終了予定日 = **2030-07-23**
+
+### ⚠️ Aturan pengisian 初回許可された日
+
+| Kondisi | Cara isi |
+|---|---|
+| **1回目** (kartu pertama) | Ambil 許可年月日 langsung dari foto kartu saat ini |
+| **2回目以降** (perpanjangan) | **WAJIB** buka Drive → 4.OLD → 1.申請書類1回目 → folder 在留カード → baca foto kartu 1回目 → ambil 許可年月日 dari sana |
+
+**JANGAN** mengambil nilai dari App 50 atau kartu saat ini untuk 2回目以降 — harus dari kartu asli 1回目 di Drive.
 
 **Link:** `https://funtoco.cybozu.com/k/30/show#record=RECORD_ID`
 
