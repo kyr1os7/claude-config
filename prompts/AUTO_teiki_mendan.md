@@ -43,9 +43,9 @@ Setiap `{{EMAIL}}` dan `{{PASSWORD}}` di prompt ini diganti dengan nilai user.
 
 ### `MENDAN (NAMA)` — Interview Online (Google Meet)
 Proses otomatis penuh:
-1. Cari file di Google Drive **Meet Recordings** (cloud) sesuai nama → ambil **file terbaru** jika ada lebih dari satu
+1. Cari gdoc/video dengan `search_files` → `fullText contains 'NAMA'` **TANPA parentId** (cari seluruh Drive), ambil yang **terbaru** jika ada lebih dari satu. ⚠️ **STRUKTUR BARU (mulai ~2026-07-23)**: tiap meeting punya **subfolder sendiri** bernama `【定期面談】 (Nama) - YYYY/MM/DD HH:MM JST` di bawah parent `1b9BoI_xMOfUInqHWl8op5gOanvFSJ5bO` (BUKAN lagi folder flat lama `1AZqg-dkn4d975Ip31akCl5kIMMqTMXDD`). Buka subfolder meeting-nya untuk ambil gdoc + video.
 2. Baca isi gdoc (Gemini Notes) via Google Docs API
-3. Copy video dari Meet Recordings ke: `共有ドライブ → 定期面談記録管理用 → {quarter_app98}` (auto-detect — lihat section targetQuarter)
+3. Copy video dari subfolder meeting ke: `共有ドライブ → 定期面談記録管理用 → {quarter_app98}` (auto-detect — lihat section targetQuarter)
    - Rename video: `【企業名】フルネーム` (contoh: `【医療法人宝山会】ANUGRA MASARRANG LOLOANGIN`)
    - Original tetap di tempat asal (jangan hapus — user hapus manual)
 4. Jalankan 4-Step Workflow (lihat bawah)
@@ -195,3 +195,5 @@ Q1=1-3月, Q2=4-6月, Q3=7-9月, Q4=10-12月
 12. **targetQuarter**: hitung dari tanggal **interview**, bukan tanggal hari ini
 13. **Format nama video**: `【企業名】フルネーム` — BUKAN `【定期面談】...` dan BUKAN include tanggal
 14. **Folder video**: tentukan berdasarkan **tanggal interview** (bukan hari ini) — Q3=Jul-Sep → folder 2026年第3四半期
+15. **⚠️ Lokasi file gdoc/video (STRUKTUR BARU ~2026-07-23)**: Google Meet berhenti menumpuk di folder flat lama `1AZqg-dkn4d975Ip31akCl5kIMMqTMXDD`. Sekarang tiap meeting dapat **subfolder sendiri** `【定期面談】 (Nama) - tanggal` di bawah parent `1b9BoI_xMOfUInqHWl8op5gOanvFSJ5bO`. Cari via `fullText contains 'Nama'` TANPA parentId (seluruh Drive), lalu buka subfolder meeting untuk gdoc + video. Video kadang belum ready di subfolder → cek lagi nanti. Kalau gdoc folder flat lama gagal generate summary (「会話量が不足」), cek subfolder baru — biasanya ada versi lengkap.
+16. **Folder ID Q3 2026** (共有ドライブ→定期面談記録管理用): `1RSwryTQ7i1Os8pIqvP6RsByg1_uG2HdN`
