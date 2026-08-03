@@ -208,3 +208,27 @@ Use anonymized examples only.
   - Even when dragging the case clearly harms the company, do not jump to 解雇: 特定技能 dismissal risks forced 帰国, may require 30-day notice or pay after the 14-day 試用期間, and an amicable 自己都合退職 is usually better for the worker.
   - Stop open-ended drift with a short trial window: concrete behavioral criteria, a clear deadline, and a pre-agreed decision rule that moves to an orderly 退職日 if no change.
   - Keep the report neutral: leader strictness is 本人申告; facility complaints are company claim; neither side is "at fault" without cross-check.
+- Outcome (case closed): retention failed and the worker resigned. Nothing changed — the most basic agreed commitment (taking notes) was never done, and nothing taught was retained. The intent to move to a different 特定技能 field eventually reached the facility, the facility head became angry, and the worker's request to keep working about three months while job-hunting was what triggered it. Coworkers lost motivation from teaching without result.
+- Outcome lessons:
+  - A worker who cannot honor the smallest concrete commitment during a trial window will not be retained. Note-taking is a useful early signal.
+  - An unresolved poor-fit case has a second victim: the teaching team. Count team morale as a real cost when deciding how long to let a case drift.
+  - Confidentiality about a 転職 intent is fragile. Plan in advance for how it will be handled if the company learns of it, rather than assuming it stays hidden.
+  - Asking to stay employed while searching for work in another field reads to the company as being used. Expect anger, and treat any extension as goodwill that must be requested, never as the worker's right.
+  - Once goodwill is spent, a further change of heart cannot restore retention. Tell an indecisive worker plainly that the door may already be closed.
+  - After the exit is decided, guardrails come before dates: the new field's skill exam and change-of-status application, the notification to immigration when the contract ends, and any outstanding loan repayment.
+  - Repair the client relationship separately from the worker's case. Acknowledge the burden the staff carried; do not defend the worker's behavior.
+
+### Example E: Growth-Motivated 転職 — No Conflict, Financial Trap Risk
+
+- 特定技能1号 介護, about 1.5 years at the current employer, no complaint about the workplace.
+- Worker opens the topic gratefully and hesitantly: wants a new environment, wants an entry-level caregiver training course sooner, and says the pay would be "better for my future".
+- This archetype is the opposite of a distress case. There is no conflict to mediate, so the risk is not a broken relationship — it is a **badly calculated financial decision** and **ignorance of the procedure**.
+- Retention level: Medium–High. The stated reason is usually **never tested** — ask first whether the worker has actually asked the current employer about the training.
+- Report position: `状況確認・改善相談`.
+- Decision lessons:
+  - Ask what "growth" concretely means. A vague answer often hides a different real reason (fatigue, a friend recruiting them, interpersonal issues).
+  - Never accept a salary figure at face value. Demand written 雇用条件書 and compare **take-home**, not gross: night-shift counts and allowances, qualification and improvement allowances, bonus, dormitory and utility deductions, commuting, and residence tax (which often jumps in the second year). Job ads that look generous frequently have small take-home after deductions.
+  - Red flag: any deduction labeled as support/management fee. Under 特定技能 the support costs must be borne by the accepting organization, not charged to the worker.
+  - 転職 under 特定技能 is not a simple notification — it needs a change-of-status application taking roughly 1–3 months, during which the worker may not start the new job. Quitting early means an income gap. The 5-year cumulative cap is not reset by changing employers.
+  - Strongest retention lever is career-path support, framed in the worker's own language of growth: at 1.5 years they are halfway to the 3 years of practical experience needed for 介護福祉士, which opens a long-term residence status. Correct the target if needed — the qualification route needs the higher-level 実務者研修, not only the entry course.
+  - Sequence the questions in batches. Light questions by chat; do the money arithmetic by phone. Open every conversation with "I am not stopping you" — a worker who feels blocked will arrange the move silently and walk into the trap.
