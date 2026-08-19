@@ -139,6 +139,20 @@ Contoh: 在留期間満了日 = 2029-06-15 → 許可年月日 = **2026-06-15**
 
 **JANGAN** mengambil nilai dari App 50 atau kartu saat ini untuk 2回目以降 — harus dari kartu asli 1回目 di Drive.
 
+### ⚠️ Aturan 郵便番号 (Kode Pos)
+
+在留カード **TIDAK PERNAH** mencetak 郵便番号 — kartu hanya menampilkan alamat teks. Jika alamat berubah (pindah rumah) dan perlu update 郵便番号:
+
+- **JANGAN** biarkan 郵便番号 kosong/tetap ke alamat lama begitu saja
+- **JANGAN** menebak atau bertanya ke user dulu
+- **CARI SENDIRI** via web search: `"<alamat lengkap>" 郵便番号`, lalu isi field yang benar
+
+### ⚠️ Field `address` (住所) bisa berupa calculated field
+
+Di beberapa app (misal App 30), field `住所` adalah **calculated/expression field** (contoh: `prefectures&municipalities&townName&streetAddress`) — **update langsung ke field ini TIDAK TERSIMPAN** (akan ter-overwrite kembali ke nilai lama oleh kalkulasi otomatis).
+
+**Sebelum update alamat:** cek dulu form fields (`kintone-get-form-fields` atau `app/form/fields.json`) apakah field `address`/`住所` punya properti `expression`. Jika ya, update **field komponennya** (misal `prefectures`, `municipalities`, `townName`, `streetAddress` — cek dulu breakdown data lama untuk pola pemecahan yang benar), bukan field gabungannya.
+
 **Link:** `https://funtoco.cybozu.com/k/30/show#record=RECORD_ID`
 
 ---
@@ -251,6 +265,8 @@ Kintone Links:
 7. **Kintone diakses via Python urllib** (bukan Kintone MCP). **Google Drive tetap via MCP** (Step 5)
 8. **Laporan** — selalu tampilkan tabel perubahan; semua App (50, 30, 13) wajib tercantum; yang tidak berubah tulis "変更なし"
 9. **Folder 4.在留カード** — buat di **dalam** folder `1.申請書類X回目` aktif, BUKAN di root folder orang
+10. **郵便番号** — kartu tidak pernah mencantumkannya; kalau alamat berubah, cari kode pos sendiri via web search, jangan biarkan kosong/lama
+11. **Field `住所` bisa calculated** — cek `expression` di form fields sebelum update; kalau calculated, update field komponennya (prefectures/municipalities/townName/streetAddress dst), bukan field gabungan
 
 ---
 
