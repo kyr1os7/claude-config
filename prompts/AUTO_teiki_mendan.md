@@ -158,6 +158,23 @@ Format ini WAJIB diikuti — nomor seksi, header 【】, bullet ・, dan blank l
 
 ---
 
+## ✍️ 文体・表現ルール (企業提出用レポート) — WAJIB
+
+Cara menulis ISI laporan `企業提出用レポート`. Ditetapkan user 2026-08.
+
+- **です・ます DILARANG.** Pakai **常体（だ・である／体言止め）** — gaya 業務報告書, ringkas.
+  - ⚠️ 尊敬語 juga jangan (「〜しておられます」「希望されています」「〜されている」) → ubah ke 常体 (「〜している」「〜を希望」「〜とのこと」).
+  - Honorifik **様** TETAP dipakai (利用者様 dsb). Yang dibuang cuma です・ます / 尊敬語動詞.
+- **伝聞・報告調** (tulis sebagai laporan honnin, jangan asersi penulis). 語尾 yang sering dipakai:
+  `〜とのこと。` / `〜と話していた。` / `〜と説明。` / `〜と報告。` / `〜と共有。` / `〜と回答。` / `〜との意向。` / `〜を希望。` / `〜との希望あり。` / `〜と考えている。` / `〜と感じている。` / `〜との認識。` / `〜との指摘あり。` / `〜との相談あり。` / `〜が挙げられた。` / `〜を検討中。` / `〜を予定。` / `〜で合意。`
+- **(A) 利用者様／患者様 konsisten dengan jenis fasilitas**: 介護施設・障害者支援施設 → **利用者様**、病院 → **患者様**. JANGAN campur dalam 1 laporan.
+- **(B) JANGAN duplikasi**: konten yang sama jangan ditulis di >1 section (contoh: 勉強会/学習 cukup di 生活・健康 1x; di キャリア tulis rencananya saja).
+- Detail berat/sensitif (暴力事案・精神科搬送 dll) JANGAN dimuat di laporan 企業提出用.
+- Masukkan **1 具体例** kalau ada. Framing positif kalau relevan (misal シフト増→収入増で助かる).
+- Tulis **hanya section yang relevan** (jangan bikin section kosong).
+
+---
+
 ## targetQuarter — Format BERBEDA antar App (AUTO-DETECT dari tanggal interview)
 
 **JANGAN hardcode quarter.** Hitung dari **tanggal interview** (bukan hari ini):
