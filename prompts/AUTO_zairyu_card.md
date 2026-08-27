@@ -101,6 +101,16 @@ Kartu ISA design baru: field 許可年月日 kadang tidak terbaca.
 
 Contoh: 在留期間満了日 = 2029-06-15 → 許可年月日 = **2026-06-15**
 
+### ⚠️ Kadang ada screenshot aplikasi 在留カード読取 (bukan foto kartu fisik)
+
+User **kadang** (tidak selalu) menyertakan file tambahan berupa screenshot hasil aplikasi resmi 在留カード等読取アプリケーション (tampilan hijau "正常な在留カードを読み取りました" / "照会結果"), selain foto fisik kartu 表/裏. Bisa jadi total file yang dikirim 3, bukan 2.
+
+Screenshot ini menampilkan bagian **「許可」** dengan `許可の種類` dan `許可年月日` secara eksplisit dan akurat.
+
+**Jika ada file screenshot aplikasi ini:**
+- Ambil 許可年月日 **langsung dari situ** — ini menggantikan (lebih akurat dari) aturan ISA di atas, tidak perlu menebak
+- File ini **bukan** dihitung sebagai 表 atau 裏 — beri naming khusus (lihat Step 5)
+
 ---
 
 ## Step 2 — Update App 50 (就労_ビザ管理)
@@ -187,6 +197,16 @@ Keterangan:
 - **資格種別**: jenis visa dari kartu
 - **回数**: sesuai urutan perpanjangan (1回目, 2回目, dst)
 
+**Jika ada screenshot aplikasi 在留カード読取** (lihat Step 1), naming-nya beda — pakai **アプリ** bukan 表/裏:
+
+```
+［在留カードアプリ : 特定技能１号X回目］フルネーム : 呼び名カタカナ.jpg
+```
+
+Contoh: `［在留カードアプリ : 特定技能１号2回目］FULLNAME : 呼び名カタカナ.jpg`
+
+呼び名カタカナ bisa dicari dari field `furigana` (label: カタカナ_呼び名) di App 30 kalau belum tahu dari histori sebelumnya.
+
 ### Target Folder di Google Drive
 
 Struktur folder per orang:
@@ -267,6 +287,7 @@ Kintone Links:
 9. **Folder 4.在留カード** — buat di **dalam** folder `1.申請書類X回目` aktif, BUKAN di root folder orang
 10. **郵便番号** — kartu tidak pernah mencantumkannya; kalau alamat berubah, cari kode pos sendiri via web search, jangan biarkan kosong/lama
 11. **Field `住所` bisa calculated** — cek `expression` di form fields sebelum update; kalau calculated, update field komponennya (prefectures/municipalities/townName/streetAddress dst), bukan field gabungan
+12. **Screenshot aplikasi 在留カード読取** — kadang ada file tambahan (total bisa 3 file); ambil 許可年月日 langsung dari situ (lebih akurat dari tebakan ISA); naming pakai `［在留カードアプリ...］`, bukan 表/裏
 
 ---
 
