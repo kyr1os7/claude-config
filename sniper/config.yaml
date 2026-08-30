@@ -24,5 +24,23 @@ discovery:
 scoring:
   alert_threshold: 60
 
+safety:
+  # Fail-closed: kalau cek gagal, token dianggap tidak aman.
+  require_authorities_revoked: true   # mint & freeze authority wajib sudah dilepas
+  min_lp_locked_pct: 80
+  max_top_holder_pct: 15
+  max_top10_pct: 40
+
+paper:
+  enabled: true
+  size_sol: 0.5            # ukuran posisi hipotetis
+  take_profit_x: 5.0
+  stop_loss_pct: 50
+  max_hold_minutes: 180
+  slippage_pct: 3          # dikenakan pada sisi masuk DAN keluar
+  fee_sol: 0.003           # gas + priority fee per sisi
+  # Cek harga posisi terbuka lebih sering daripada scan sosial.
+  track_interval_minutes: 5
+
 store:
   path: ./sniper.db

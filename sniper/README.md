@@ -37,12 +37,41 @@ Premisnya: ada jeda waktu antara *"normie sudah meme-in sesuatu"* dan
 | `core/discovery.py` — Dexscreener | ✅ chain-agnostic |
 | `core/score.py` — gap score | ✅ |
 | `core/notify.py` — Telegram | ✅ |
-| `core/safety.py` — rug/honeypot | ⛔ stub |
-| eksekusi trade (buy/sell) | ⛔ belum |
+| `core/safety.py` — Solana rug check | ✅ |
+| `core/paper.py` — paper trading + PnL | ✅ |
+| eksekusi trade nyata (buy/sell) | ⛔ sengaja belum |
 
-Sekarang bot ini **alert-only**: dia mengirim sinyal, tidak memegang uang.
-Itu disengaja — jalankan mode ini dulu beberapa hari dan nilai kualitas
-sinyalnya sebelum menyambungkan dompet.
+Bot ini **alert-only**: mengirim sinyal dan mencatat trade hipotetis, tidak
+memegang uang. Jalankan begini dulu ~seminggu, lalu `python run.py --stats`.
+Kalau win-rate-nya tidak meyakinkan di uang bohongan, dia juga tidak akan
+meyakinkan di uang asli.
+
+## Safety check (Solana)
+
+Dua lapis, dan **fail-closed** — kalau pengecekan gagal, token ditolak:
+
+1. **RPC Solana langsung** — `mintAuthority` dan `freezeAuthority` wajib sudah
+   dilepas. Ini fakta on-chain yang otoritatif: kalau mint authority masih
+   hidup, dev bisa mencetak suplai tak terbatas kapan saja.
+2. **rugcheck.xyz** — LP terkunci ≥80%, holder terbesar ≤15%, top-10 ≤40%,
+   plus risiko level danger. Alamat burn dan pool LP dikecualikan dari hitungan
+   konsentrasi supaya tidak salah tuduh.
+
+Token yang gagal ditandai `blacklist` dan tidak akan di-alert lagi.
+
+## Paper trading
+
+Setiap alert yang lolos safety membuka posisi hipotetis, lalu dilacak tiap
+5 menit sampai kena take-profit (5x), stop-loss (-50%), atau time-stop (3 jam).
+
+Biaya dimodelkan: slippage 3% di sisi masuk **dan** keluar, plus fee per sisi.
+Jadi TP 5x tercatat sebagai 4.70x bersih, bukan 5.00x. Ini yang membuat angkanya
+jujur — perhatikan bahwa screenshot bot yang beredar tidak memperhitungkan
+satu pun dari ini.
+
+```bash
+python run.py --stats    # closed / win rate / kumulatif SOL / posisi terbuka
+```
 
 ## Adverse selection — baca ini sebelum lanjut
 
@@ -61,9 +90,18 @@ menemukan meme dengan benar dan tetap kehilangan uang.
 ```bash
 pip install -r requirements.txt
 cp .env.example .env      # isi XAI_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+python verify.py          # WAJIB — lihat catatan di bawah
 python run.py --once      # satu siklus, buat tes
-python run.py             # loop sesuai config.yaml
+python run.py             # loop
 ```
+
+### Jalankan `verify.py` lebih dulu
+
+Kode ini ditulis di lingkungan yang egress-nya diblokir, jadi bentuk respons
+Dexscreener, rugcheck, dan xAI **belum pernah diuji terhadap endpoint asli**.
+`verify.py` memeriksa bahwa setiap field yang diandalkan kode memang ada, dan
+menyebutkan persis field mana yang hilang kalau ada API yang berubah. Kalau ada
+yang merah, perbaiki itu dulu sebelum menjalankan bot.
 
 Butuh API key berbayar dari https://console.x.ai (terpisah dari X Premium).
 Nama model terbaru cek di https://docs.x.ai/docs/models — `config.yaml`

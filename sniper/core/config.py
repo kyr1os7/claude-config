@@ -18,6 +18,8 @@ class Config:
         self.filters = raw["filters"]
         self.discovery = raw["discovery"]
         self.scoring = raw["scoring"]
+        self.safety = raw["safety"]
+        self.paper = raw["paper"]
         self.store = raw["store"]
 
     @property

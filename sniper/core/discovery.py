@@ -11,6 +11,7 @@ from dataclasses import dataclass
 import httpx
 
 SEARCH_URL = "https://api.dexscreener.com/latest/dex/search"
+TOKENS_URL = "https://api.dexscreener.com/latest/dex/tokens/{addresses}"
 
 
 @dataclass
@@ -83,6 +84,28 @@ class Discovery:
                 )
             )
         return pairs
+
+    def prices(self, addresses: list[str]) -> dict[str, float]:
+        """Harga USD terbaru per token address. Dipakai melacak posisi paper."""
+        out: dict[str, float] = {}
+        for i in range(0, len(addresses), 30):   # batas Dexscreener per panggilan
+            chunk = addresses[i:i + 30]
+            try:
+                resp = self.client.get(TOKENS_URL.format(addresses=",".join(chunk)))
+                resp.raise_for_status()
+            except httpx.HTTPError:
+                continue
+            for p in (resp.json().get("pairs") or []):
+                addr = (p.get("baseToken") or {}).get("address")
+                price = _f(p, "priceUsd")
+                # Beberapa pair per token; pakai yang likuiditasnya terbesar.
+                if addr and price > 0:
+                    liq = _f(p, "liquidity", "usd")
+                    prev = out.get(addr)
+                    if prev is None or liq > out.get(f"_liq_{addr}", 0):
+                        out[addr] = price
+                        out[f"_liq_{addr}"] = liq
+        return {k: v for k, v in out.items() if not k.startswith("_liq_")}
 
     def find(self, term: str, tickers: list[str]) -> list[Pair]:
         """Cari term + semua tebakan ticker, lalu saring pakai config."""

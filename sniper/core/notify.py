@@ -5,6 +5,8 @@ import html
 
 import httpx
 
+from .paper import Closed
+from .safety import SafetyReport
 from .score import Scored
 
 
@@ -12,7 +14,23 @@ def _esc(s: str) -> str:
     return html.escape(str(s), quote=False)
 
 
-def format_alert(s: Scored) -> str:
+def format_closed(c: Closed, stats: dict) -> str:
+    win = c.pnl_sol > 0
+    return "\n".join([
+        f"{'✅' if win else '🔴'} <b>PAPER TRADE CLOSED</b> — {_esc(c.symbol)}",
+        f"Meme: {_esc(c.term)}",
+        "",
+        f"• Hasil: <b>{c.pnl_x:.2f}x</b> ({c.pnl_sol:+.3f} SOL, net biaya)",
+        f"• Puncak: {c.peak_x:.2f}x",
+        f"• Alasan tutup: {_esc(c.reason)}",
+        f"• Hold: {c.held_minutes:.0f} menit",
+        "",
+        f"📊 Total {stats['closed']} trade · win rate <b>{stats['win_rate']:.0%}</b> · "
+        f"kumulatif <b>{stats['total_sol']:+.3f} SOL</b> · {stats['open']} posisi terbuka",
+    ])
+
+
+def format_alert(s: Scored, safety: SafetyReport | None = None) -> str:
     c, p = s.candidate, s.pair
     lines = [
         f"🚨 <b>SOCIAL ALPHA</b> — <b>{_esc(c.term)}</b>",
@@ -45,7 +63,9 @@ def format_alert(s: Scored) -> str:
     if c.evidence:
         lines += ["", "<b>Bukti</b>:"] + [f"• {_esc(u)}" for u in c.evidence[:3]]
 
-    lines += ["", "⚠️ <i>Belum ada safety check. Verifikasi manual sebelum beli.</i>"]
+    if safety is not None:
+        lines += ["", f"<b>Safety</b>: {_esc(safety.summary())}"]
+    lines += ["", "⚠️ <i>Paper trade — bukan eksekusi nyata. Verifikasi sendiri sebelum beli.</i>"]
     return "\n".join(lines)
 
 
