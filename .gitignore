@@ -9,3 +9,8 @@ shell-snapshots/
 session-env/
 .last-cleanup
 *.sha256
+
+# sniper bot
+sniper/.env
+sniper/*.db
+sniper/**/__pycache__/

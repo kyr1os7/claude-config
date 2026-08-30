@@ -1,0 +1,28 @@
+scanner:
+  # Grok hanya melihat jendela waktu ini. Terlalu lebar = meme sudah basi.
+  window_hours: 12
+  # Berapa kali scan per jam. Velocity butuh >=2 observasi, jadi jangan terlalu jarang.
+  interval_minutes: 20
+  model: grok-4
+  max_candidates: 12
+
+filters:
+  # Buang kandidat yang CT-nya sudah ramai. Ini gerbang utama strategi.
+  max_crypto_saturation: 35
+  # Heat minimum di timeline normie.
+  min_heat: 45
+  # Butuh minimal sekian komunitas berbeda supaya bukan sekadar 1 klaster.
+  min_communities: 2
+
+discovery:
+  # Dexscreener search: chain-agnostic, tanpa API key.
+  chains: [solana, ethereum, base]
+  max_pair_age_hours: 24
+  min_liquidity_usd: 8000
+  max_fdv_usd: 3000000
+
+scoring:
+  alert_threshold: 60
+
+store:
+  path: ./sniper.db
