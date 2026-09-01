@@ -117,11 +117,15 @@ Screenshot ini menampilkan bagian **「許可」** dengan `許可の種類` dan 
 
 **Fields yang diupdate:**
 
-| Field Kintone | Nilai dari kartu |
-|---|---|
-| `在留カード番号（支援のみ）` | Nomor kartu |
-| `在留カード記載_許可年月日（支援のみ）` | 許可年月日 (gunakan aturan ISA jika tidak terbaca) |
-| `在留期限（支援のみ）` | 在留期間満了日 |
+| Field Kintone (label) | Field code | Nilai dari kartu |
+|---|---|---|
+| 在留カード番号（支援のみ） | `residenceCardNo` | Nomor kartu |
+| 在留カード記載_許可年月日（支援のみ） | `residenceCardPermitDate` | 許可年月日 (gunakan aturan ISA jika tidak terbaca, atau screenshot app jika ada) |
+| 在留期限（支援のみ） | `residenceCardExpirationDate` | 在留期間満了日 |
+| 在留期間（支援のみ） | `在留期間` | Durasi kartu — DROP_DOWN, contoh: `1年`, `3年`, `1年2月`. Ambil dari screenshot app (field "在留期間" eksplisit) atau hitung selisih 許可年月日→在留期限 |
+| 許可日チェック | `許可日ダブルチェック_一時的_` | CHECK_BOX — centang `確認済み` setiap kali selesai update (menandakan sudah diverifikasi) |
+
+⚠️ **Jangan lupakan 2 field terakhir** (在留期間 dan 許可日チェック) — mudah terlewat karena tidak sepopuler 3 field pertama, tapi wajib diisi tiap task.
 
 **Link:** `https://funtoco.cybozu.com/k/50/show#record=RECORD_ID`
 
@@ -288,6 +292,7 @@ Kintone Links:
 10. **郵便番号** — kartu tidak pernah mencantumkannya; kalau alamat berubah, cari kode pos sendiri via web search, jangan biarkan kosong/lama
 11. **Field `住所` bisa calculated** — cek `expression` di form fields sebelum update; kalau calculated, update field komponennya (prefectures/municipalities/townName/streetAddress dst), bukan field gabungan
 12. **Screenshot aplikasi 在留カード読取** — kadang ada file tambahan (total bisa 3 file); ambil 許可年月日 langsung dari situ (lebih akurat dari tebakan ISA); naming pakai `［在留カードアプリ...］`, bukan 表/裏
+13. **App 50 — 2 field tambahan wajib diisi** — `在留期間`(DROP_DOWN, durasi seperti kartu) dan `許可日ダブルチェック_一時的_`(CHECK_BOX, centang `確認済み`) — jangan cuma isi 3 field utama (nomor/許可年月日/在留期限)
 
 ---
 
