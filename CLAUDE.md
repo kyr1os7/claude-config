@@ -18,5 +18,6 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian.md |
 | mendanyoyaku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_mendan_yoyaku.md |
 | visastatus | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_visa_status.md |
+| hikkoshi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_hikkoshi_calendar.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
