@@ -12,7 +12,7 @@ Trigger word: `hikkoshi` (prompt: kyr1os7/claude-config prompts/AUTO_hikkoshi_ca
 
 App 264 = jadwal 引越し/運転 (movingDate, 開始/終了, 現在住所, 新役所名/MAPリンク, 配属先名/MAPリンク, 担当名/担当連絡先, 新住所, ガス会社名/ガス会社_連絡先/ガス立ち会い予定/ガス保証金額, 運転担当).
 
-Event: tanggal = movingDate, jam = 開始–終了 (JST), title `【引越し・運転】名前／法人名`, location = titik start.
+Event: tanggal = movingDate, jam = 開始–終了 (JST), title `【引越し対応・運転】名前／法人名`, location = titik start.
 TRIGGER (user kirim):
 ```
 【出発点・タイムスパーク】

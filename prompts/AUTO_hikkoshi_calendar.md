@@ -73,7 +73,7 @@ Kalau 挨拶 = 無 → lewati singgah 挨拶 (langsung ke 新住所), sebutkan k
 
 ## 📅 Step 4 — Buat event Google Calendar
 
-- Title: `【引越し・運転】<名前>／<法人名>`
+- Title: `【引越し対応・運転】<名前>／<法人名>`
 - Waktu: `movingDate` `開始`–`終了` (Asia/Tokyo)
 - Location: `<nama titik start>（<alamat>）`
 - Update berikutnya: `notificationLevel: NONE`
