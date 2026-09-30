@@ -22,6 +22,7 @@ User mengirim:
 ```
 【出発点・タイムスパーク】
 <nama tempat>            ← diketik user (mis. タイムズカー タイムズ大阪難波)
+(opsional) jam berangkat, mis. 10:00   ← default 09:00
 
 https://funtoco.cybozu.com/k/264/show#record=<ID>
 ```
@@ -56,7 +57,7 @@ Field yang dipakai:
 
 ## 🚗 Step 3 — Estimasi rute mobil
 
-Urutan tetap: **出発点 → 現在住所 → 新役所 → 配属先（挨拶）→ 新住所**. Selalu berangkat **09:00**.
+Urutan tetap: **出発点 → 現在住所 → 新役所 → 配属先（挨拶）→ 新住所**. Default berangkat **09:00** — kalau user menyebut jam lain (mis. `10:00`), pakai jam itu dan geser semua jam setelahnya.
 
 Asumsi waktu singgah (teks persis dipakai di memo):
 - 現在住所 → `（現在住所 荷物積込み30分想定）`
@@ -67,7 +68,7 @@ Format baris 【異動】:
 ```
 【異動】車で約X分（約Ykm[・経由道路]）｜HH:MM出発（滞在想定）→ HH:MM頃到着
 ```
-Leg pertama: `｜09:00出発 → HH:MM頃到着` (tanpa teks singgah).
+Leg pertama: `｜<jam berangkat>出発 → HH:MM頃到着` (tanpa teks singgah).
 Kalau 挨拶 = 無 → lewati singgah 挨拶 (langsung ke 新住所), sebutkan ke user.
 
 ## 📅 Step 4 — Buat event Google Calendar
@@ -88,7 +89,7 @@ Kalau 挨拶 = 無 → lewati singgah 挨拶 (langsung ke 新住所), sebutkan k
 <nama tempat>
 <link google map>
 
-【異動】車で約40分（約18km）｜09:00出発 → 09:40頃到着
+【異動】車で約40分（約18km）｜<jam berangkat>出発 → HH:MM頃到着
 
 【現在情報】
 現在住所：〇〇

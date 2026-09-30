@@ -20,7 +20,7 @@ TRIGGER (user kirim):
 <link google map> ← Claude carikan
 ```
 + link record App 264. Claude: cari alamat tempat itu (WebSearch, mis. share.timescar.jp), buat link Google Maps search (nama + alamat, URL-encoded), tulis 2 baris itu di bawah 【出発点・タイムスパーク】; location event = nama（alamat）.
-Urutan rute: 出発点 → 現在住所 → 新役所 → 配属先(挨拶) → 新住所. Selalu berangkat 09:00.
+Urutan rute: 出発点 → 現在住所 → 新役所 → 配属先(挨拶) → 新住所. Default berangkat 09:00, KECUALI user sebut jam lain (mis. "10:00 dari タイムズ") → pakai jam itu & geser semua jam; jam event Calendar tetap 開始–終了 Kintone.
 Baris 【異動】 berisi: `車で約X分（約Ykm）｜HH:MM出発（滞在想定）→ HH:MM頃到着`. Asumsi dipakai (teks persis): `（現在住所 荷物積込み30分想定）`, `（役所手続き1時間30分想定）`, `（挨拶30分想定）`.
 Field kosong → 未確認; nilai tidak diubah. KECUALI 現在情報: user minta selalu dilengkapi — 現在住所・MAPリンク = Google Maps search link (https://www.google.com/maps/search/?api=1&query=<alamat encoded>), 現在市役所 = cari via WebSearch (nama + 〒 + alamat resmi). Kintone tidak ikut diubah. Contoh pertama: record 1 (2026-10-01).
 Paling bawah memo (setelah 【ガス情報】): `レオパレス部屋詳細PDF：<link download.do>` lalu `Kintoneレコード：https://funtoco.cybozu.com/k/264/show#record=ID`. Link PDF format `https://funtoco.cybozu.com/k/api/record/download.do/-/<file>.pdf?app=264&field=6154840&detectType=true&record=ID&row=..&id=..&hash=..&revision=..&.pdf` — hash/row/id tidak ada di REST API, jadi ambil dari UI record (browser) atau minta user.
