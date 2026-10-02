@@ -59,22 +59,28 @@ Aturan pilih akun:
 
 ## 💬 Step 2 — Kirim lewat Chrome
 
-Untuk tiap orang (satu per satu, satu tab):
+Untuk tiap orang (satu per satu, satu tab). Pesan boleh beda bahasa per orang (mis. sebagian Indonesia, sebagian Jepang) sesuai permintaan user.
 
-1. `navigate` ke link dari Zendesk, tunggu ±4 detik.
-2. Cari kolom input:
-   - Facebook: `find` → "Reply in Messenger text box"
-   - LINE: `find` → "message input textarea" (placeholder `Enterで送信 / Shift + Enterで改行`)
-3. Klik kolom, ketik pesan **baris per baris**. Ganti baris dengan `shift+Enter` (baris kosong = `shift+Enter shift+Enter`). Jangan tekan `Enter` biasa di tengah pesan (langsung terkirim).
-4. Kirim:
-   - Facebook: `find` → "Send button in reply composer", klik ref-nya. (Jangan pakai koordinat; layout bergeser setelah teks panjang diketik.)
-   - LINE: tombol hijau **送信** di kanan bawah kolom input.
-5. Screenshot → pastikan bubble pesan muncul dengan jam kirim (FB: "Sent by Funtoco …").
+**Facebook (Meta Business Suite) — pakai JavaScript paste, BUKAN keyboard typing.**
+Mengetik lewat `computer type` kadang tidak stabil di editor Messenger (teks ASCII/baris baru hilang, draft rusak). Cara yang stabil dan bisa diverifikasi lewat kode:
+
+1. `navigate` ke link Zendesk, `wait` 4 detik.
+2. `javascript_tool`: cari `[role=textbox][contenteditable=true]` (ambil yang terakhir), pastikan composer kosong, kirim event `paste` dengan `DataTransfer` berisi teks (baris dipisah `
+`), **verifikasi `tb.innerText.trim() === pesan.trim()`**, baru klik tombol `Send` (`[role=button]` / `button` dengan teks/aria-label "Send"), tunggu 3 detik, cek composer kosong, kembalikan `SENT` + jam.
+   ```js
+   const dt=new DataTransfer(); dt.setData('text/plain', exp);
+   tb.dispatchEvent(new ClipboardEvent('paste',{clipboardData:dt,bubbles:true,cancelable:true}));
+   ```
+3. Kalau hasil `NONEMPTY` / `MISMATCH` / `NO_SEND` → jangan kirim; bersihkan draft (cmd+a, Delete) dan ulangi/tanya user.
+4. Beberapa orang bisa digabung dalam satu `browser_batch` (navigate → wait → javascript_tool per orang, ±5 orang per batch). Screenshot sampel 1x untuk memastikan bubble terkirim.
+
+**LINE (chat.line.biz):** editor bukan `<textarea>` biasa, jadi pakai keyboard: klik kolom input, `type` per baris + `shift+Return` untuk baris baru, `zoom` untuk cek, lalu klik tombol hijau **送信** (kanan bawah kolom input), screenshot untuk konfirmasi.
 
 Catatan:
+- Pakai `shift+Return` (bukan `Enter`) untuk baris baru; `Return` biasa di FB tidak mengirim, di LINE langsung mengirim.
 - **Nama di Messenger/LINE sering beda** dengan nama Zendesk (nama panggilan/nama keluarga). **Tidak perlu dipikirkan/dilaporkan** — selama link dari Zendesk benar, langsung kirim.
-- Yang perlu dihentikan & ditanyakan ke user: nama tidak ditemukan di Zendesk, link kosong, chat tidak terbuka / minta login, atau Meta/LINE menolak pesan.
-- Pakai `browser_batch` untuk menggabungkan navigate + find + ketik supaya cepat.
+- Yang perlu dihentikan & ditanyakan ke user: nama tidak ditemukan di Zendesk, link kosong (`sns_link_11_20` kosong → lewati & laporkan), chat tidak terbuka / minta login, atau Meta/LINE menolak pesan.
+- Blast banyak orang (30+) berjalan lancar tanpa penolakan; jeda ±12 detik per orang sudah cukup.
 
 ## ✅ Step 3 — Laporan ke user (Bahasa Indonesia)
 
