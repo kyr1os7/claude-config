@@ -43,7 +43,10 @@ Untuk tiap nama:
 GET https://funtoco.zendesk.com/api/v2/users/search.json?query=name:"NAMA"
 ```
 
-Ambil user yang namanya diawali NAMA, lalu baca field `user_fields.sns_link_11_20` (link chat).
+Ambil user yang namanya diawali NAMA, lalu baca link chat dari `user_fields` dengan urutan:
+1. `sns_link_11_20` (link Facebook Business Suite atau LINE)
+2. kalau kosong → `intagram_link` (nama field typo; isinya link **LINE** `chat.line.biz`; di profil Zendesk tampil sebagai `LINE_Chat_Link`)
+3. kalau masih kosong → cek SEMUA `user_fields` yang berisi `http`. **Jangan simpulkan "tidak ada link" hanya dari `sns_link_11_20`.**
 
 Aturan pilih akun:
 
@@ -74,12 +77,12 @@ Mengetik lewat `computer type` kadang tidak stabil di editor Messenger (teks ASC
 3. Kalau hasil `NONEMPTY` / `MISMATCH` / `NO_SEND` → jangan kirim; bersihkan draft (cmd+a, Delete) dan ulangi/tanya user.
 4. Beberapa orang bisa digabung dalam satu `browser_batch` (navigate → wait → javascript_tool per orang, ±5 orang per batch). Screenshot sampel 1x untuk memastikan bubble terkirim.
 
-**LINE (chat.line.biz):** editor bukan `<textarea>` biasa, jadi pakai keyboard: klik kolom input, `type` per baris + `shift+Return` untuk baris baru, `zoom` untuk cek, lalu klik tombol hijau **送信** (kanan bawah kolom input), screenshot untuk konfirmasi.
+**LINE (chat.line.biz):** editor bukan `<textarea>` biasa, jadi pakai keyboard. Setelah halaman baru dibuka, percobaan mengetik PERTAMA sering hilang (kolom tetap kosong) → selalu `zoom/screenshot` dulu; kalau kosong, ulangi klik+ketik (percobaan kedua berhasil). Klik kolom lewat `find` ref (bukan koordinat), `type` per baris + `shift+Return` untuk baris baru, `zoom` untuk cek, lalu klik tombol hijau **送信** (kanan bawah kolom input), screenshot untuk konfirmasi.
 
 Catatan:
 - Pakai `shift+Return` (bukan `Enter`) untuk baris baru; `Return` biasa di FB tidak mengirim, di LINE langsung mengirim.
 - **Nama di Messenger/LINE sering beda** dengan nama Zendesk (nama panggilan/nama keluarga). **Tidak perlu dipikirkan/dilaporkan** — selama link dari Zendesk benar, langsung kirim.
-- Yang perlu dihentikan & ditanyakan ke user: nama tidak ditemukan di Zendesk, link kosong (`sns_link_11_20` kosong → lewati & laporkan), chat tidak terbuka / minta login, atau Meta/LINE menolak pesan.
+- Yang perlu dihentikan & ditanyakan ke user: nama tidak ditemukan di Zendesk, semua field link kosong (setelah cek `sns_link_11_20`, `intagram_link`, dan field lain → baru lewati & laporkan), chat tidak terbuka / minta login, atau Meta/LINE menolak pesan.
 - Blast banyak orang (30+) berjalan lancar tanpa penolakan; jeda ±12 detik per orang sudah cukup.
 
 ## ✅ Step 3 — Laporan ke user (Bahasa Indonesia)
