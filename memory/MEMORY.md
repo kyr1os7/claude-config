@@ -21,3 +21,4 @@
 - [Personal values for AUTO prompts](reference_kintone_auth.md) — LOCAL ONLY: Sandy's email/password/user ID/Zendesk token/nama untuk isi semua {{...}} placeholder di AUTO prompt (Step 0)
 - [日々面談 workflow (hibimendan)](reference_hibi_mendan_workflow.md) — CEK/MANUAL trigger, targetQuarter auto-clear fix, FunBase表示 default=pending(営業担当確認), tableStorageDaily JSON format
 - [引越し Calendar (App 264)](reference_hikkoshi_calendar.md) — trigger `hikkoshi` / 【出発点・タイムスパーク】+nama tempat: App264→Calendar memo + rute mobil 09:00
+- [Blast message (blastmessage)](reference_teiki_blast.md) — Zendesk sns_link_11_20 → FB Business Suite / LINE OA via Chrome; isi pesan berubah-ubah; laporan + link chat
