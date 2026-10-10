@@ -1,0 +1,37 @@
+- [特定技能通算・残り月数](reference_tokutei_ginou_tsuusan.md) — App 30: 特定技能勤務年=月数, 月_0=残り月数; 現在の年/月 manual di grup 「特定技能通算」(tertutup default)
+- [Jangan ubah field tak disebut](feedback_jangan_ubah_field_tak_disebut.md) — "simpan" ≠ ubah nilai; field visa (初回許可された日/終了予定日/職歴の日付) tanya dulu
+- [退職相談 Agent Pack](reference_retirement_trouble_pack.md) — pack location ~/Claude/retirement-trouble-agent + case storage rules (anonim di pack, PII di retirement-trouble-cases)
+- ["up github" flow](feedback_up_github_flow.md) — trigger "up github": backup sesi ke GitHub, anonim→public claude-config, PII→private claude-config-private
+- [Company name aliases](reference_company_name_aliases.md) — nama kaisha di form booking (Jisekai→医療法人社団慈誠会 dll) harus dikonversi ke nama resmi di laporan
+- [Funtoco terminology](reference_funtoco_terminology.md) — 支援者 = pekerja asing yang didampingi (kebalikan arti umum); jangan dikoreksi jadi 対象者
+- [社内AI勉強会 seri 3 sesi](project_ai_benkyoukai.md) — Sandy jadi pembicara; sesi 1 (2026-07-30) deck selesai di ~/Claude/benkyoukai-ai, sesi 2 & 3 menyusul
+- [Google Slides MCP](reference_google_slides_mcp.md) — connector terpasang & terautentikasi; token, jebakan setup, dan batasan get_slide/update_text
+- [Google Drive naming convention](reference_dropbox_naming.md) — 書類格納 rules for file naming and folder structure in Google Drive (在留カード, 申請書類, etc.)
+- [Cloud storage no overwrite](feedback_dropbox_no_overwrite.md) — NEVER delete or overwrite files in Google Drive/Dropbox, allow duplicates
+- [Kintone record link](feedback_kintone_link.md) — Always provide Kintone link (https://funtoco.cybozu.com/k/50/show#record=ID) at end of each task
+- [Email subject format](feedback_email_subject.md) — 業務報告メールSubject: 【業務報告】YYYY年M月D日（曜日）・SANDY PRATAMA TELAUMBANUA
+- [No send confirmation](feedback_no_send_confirm.md) — ドラフト作成後に「送信しますか？」と確認しない（ユーザーが手動送信）
+- [Gmail draft URL handling](feedback_gmail_plain_text.md) — 署名URLはhtmlBodyで`<a href>`使用（clickable希望）。create_draftが全URLをgoogle.com/url+破損文字に変換するがq=は無事。bodyはZWSP（funtoco​.jp）
+- [Bahasa Indonesia](feedback_bahasa_indonesia.md) — 対話はインドネシア語、成果物（メール本文・Kintone値）は日本語のまま
+- [Daily interview KPI source](reference_daily_interview_kpi.md) — 日々面談実績はKintone App 98から取得（目標40件/月）
+- [Regular interview KPI source](reference_teiki_mendan_kpi.md) — 定期面談進捗はKintone App 258から取得（supportStaff, targetQuarter, 目標100%）
+- [Exclude routine events](feedback_exclude_routine.md) — 確認リマインド・タスク確認もKintone・メールから除外（Lunch等と同じ）
+- [Category mapping](feedback_category_mapping.md) — 支援者向け案内/フォロー=Zendesk対応、社内事務・記録作成=その他（email・App241両方）
+- [Funtoco DNA list](reference_funtoco_dna.md) — 20項目のFuntoco DNA一覧（今週実行するDNA・今日感じたDNAで使用）
+- [Japan timezone](feedback_japan_timezone.md) — UserはJST在住、日付処理は必ずJST基準（深夜0時前後注意）
+- [Kintone apps list](reference_kintone_apps.md) — App 13/50/98/241/258の用途一覧
+- [面談予約日程 workflow](reference_mendan_yoyaku.md) — Gmail予約完了メール検索→Kintone App 13の面談実施日更新
+- [在留カード update workflow](reference_zairyu_card_update.md) — 写真→App 50更新→Dropbox保存→全リンク返却
+- [許可年月日 fill rule](feedback_zairyu_permit_date.md) — ISA新デザインカードで読めない場合：年=作業年、月日=在留期間満了日と同じ
+- [日々面談 workflow (hibimendan)](reference_hibi_mendan_workflow.md) — CEK/MANUAL trigger, targetQuarter auto-clear fix, FunBase表示 default=pending(営業担当確認), tableStorageDaily JSON format
+- ["cek" app50 status flow](reference_cek_app50_workflow.md) — trigger "cek": lapor perubahan status app50 (作業者=Sandy), ⭐ untuk 4 status "bola di Sandy"
+- [在留カード output format](feedback_zairyu_output_format.md) — tampilkan perubahan dalam tabel (フィールド/変更前/変更後) setelah selesai
+- [在留カード folder location](feedback_zairyu_folder_location.md) — folder 4.在留カード dibuat di DALAM 1.申請書類X回目, bukan di root folder orang
+- [在留カード 郵便番号 lookup](feedback_zairyu_postal_code.md) — kartu tak ada kode pos; cari sendiri via WebSearch; address App30 = calculated field (4 komponen)
+- [在留カードアプリ screenshot](feedback_zairyu_app_screenshot.md) — kadang ada screenshot app読取 berisi 許可年月日 eksplisit; naming ［在留カードアプリ...］, bukan aturan ISA
+- [在留期間 + 許可日チェック](feedback_zairyu_permit_check_period.md) — App 50 juga isi field `在留期間`(durasi, DROP_DOWN) dan centang `許可日ダブルチェック_一時的_`(確認済み)
+- [Zendesk callout spacing](feedback_zendesk_callout_spacing.md) — div margin diabaikan theme; pakai spacer `<p>&nbsp;</p>` (1x) sebelum heading berikutnya
+- [引越し Calendar (App 264)](reference_hikkoshi_calendar.md) — trigger 【出発点・タイムスパーク】+nama tempat: App264→Calendar memo + rute mobil 09:00
+- [Blast message (blastmessage)](reference_teiki_blast.md) — Zendesk sns_link_11_20 → FB Business Suite / LINE OA via Chrome; isi pesan berubah-ubah; laporan + link chat
+- [Istilah Jepang di versi non-JA](feedback_zendesk_jp_terms_non_ja.md) — Help Center en/id/vi/my/ne: tulis arti lokal + kanji + cara baca hiragana（…）
+- [Zendesk AI agent eskalasi](project_zendesk_ai_agent_escalation.md) — desain semua percakapan AI→eskalasi+tag+assign 担当; masalah terbuka: BSAT diabaikan tak tereskalasi, timer Knowledge reply tak ada (2026-10-05)
