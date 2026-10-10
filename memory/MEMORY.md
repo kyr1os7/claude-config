@@ -35,3 +35,4 @@
 - [Blast message (blastmessage)](reference_teiki_blast.md) — Zendesk sns_link_11_20 → FB Business Suite / LINE OA via Chrome; isi pesan berubah-ubah; laporan + link chat
 - [Istilah Jepang di versi non-JA](feedback_zendesk_jp_terms_non_ja.md) — Help Center en/id/vi/my/ne: tulis arti lokal + kanji + cara baca hiragana（…）
 - [Zendesk AI agent eskalasi](project_zendesk_ai_agent_escalation.md) — desain semua percakapan AI→eskalasi+tag+assign 担当; masalah terbuka: BSAT diabaikan tak tereskalasi, timer Knowledge reply tak ada (2026-10-05)
+- [AI server migration](project_ai_server_migration.md) — pindah ke PC 24 jam via Remote Control; OS belum dipilih; repo private = sumber migrasi (MIGRATION.md); transcript tidak dibawa
