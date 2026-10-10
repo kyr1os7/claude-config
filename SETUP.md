@@ -41,6 +41,11 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian.md |
 | mendanyoyaku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_mendan_yoyaku.md |
 | visastatus | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_visa_status.md |
+| hikkoshi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_hikkoshi_calendar.md |
+| blastmessage | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_blast_message.md |
+| nichiisheet | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_nichii_sheet.md |
+| kyuujin | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_kyuujin.md |
+| hikitsugi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/PROJECT_hikitsugi.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
 ```
@@ -66,6 +71,11 @@ Buka session Claude Code baru, ketik trigger word sesuai kebutuhan:
 | `gyomuhoukoku` | 業務報告 — buat laporan harian + Kintone + Gmail draft |
 | `mendanyoyaku` | 面談予約日程 — update tanggal dari email reservasi |
 | `visastatus` | ビザステータス — cek perubahan status visa App 50 (作業者=Anda) |
+| `hikkoshi` | 引越対応 — memo Google Calendar + rute mobil dari Kintone App 264 (引越し) |
+| `blastmessage` | Blast Message — pesan massal ke pekerja via FB Business Suite / LINE OA (Chrome) |
+| `nichiisheet` | ニチイ学館シート — ubah catatan/chat jadi laporan 相談・報告・依頼 (Jepang) |
+| `kyuujin` | 求人 — teks lowongan + perhitungan 手取り dari Kintone App 16 / web perusahaan |
+| `hikitsugi` | 引き継ぎシート — tambah/urutkan 支援者 (WO-xxxx) di Google Sheet serah-terima |
 | `automation` | Tampilkan semua trigger word yang tersedia |
 
 **Claude akan otomatis fetch instruksi dari GitHub, lalu siap menerima perintah.**
