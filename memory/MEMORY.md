@@ -10,6 +10,7 @@
 - [Cloud storage no overwrite](feedback_dropbox_no_overwrite.md) — NEVER delete or overwrite files in Google Drive/Dropbox, allow duplicates
 - [Kintone record link](feedback_kintone_link.md) — Always provide Kintone link (https://funtoco.cybozu.com/k/50/show#record=ID) at end of each task
 - [Email subject format](feedback_email_subject.md) — 業務報告メールSubject: 【業務報告】YYYY年M月D日（曜日）・SANDY PRATAMA TELAUMBANUA
+- [Keep existing workflow](feedback_keep_existing_workflow.md) — jangan ubah workflow yang sudah jalan kecuali diminta; zairyucard/shoruikakunou tetap dari Downloads
 - [No send confirmation](feedback_no_send_confirm.md) — ドラフト作成後に「送信しますか？」と確認しない（ユーザーが手動送信）
 - [Gmail draft URL handling](feedback_gmail_plain_text.md) — 署名URLはhtmlBodyで`<a href>`使用（clickable希望）。create_draftが全URLをgoogle.com/url+破損文字に変換するがq=は無事。bodyはZWSP（funtoco​.jp）
 - [Bahasa Indonesia](feedback_bahasa_indonesia.md) — 対話はインドネシア語、成果物（メール本文・Kintone値）は日本語のまま

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 20e01b5b-8397-4ef9-a090-3e366faaf0ab
-  modified: 2026-10-10T08:43:34.675Z
+  modified: 2026-10-10T15:30:02.230Z
 ---
 
 Sandy berencana memindahkan semua kerja Claude ke **1 PC yang menyala 24 jam** dan berhenti menyimpan file di laptop. Status 2026-10-10: PC **belum dibeli, OS belum ditentukan**.
@@ -20,7 +20,7 @@ Sandy berencana memindahkan semua kerja Claude ke **1 PC yang menyala 24 jam** d
 - **Konfigurasi MCP yang aktif ada di `~/.claude.json`** (kintone, google-slides, google-sheets) — BUKAN `~/.claude/mcp.json` (file lama, tidak dibaca Claude Code). Blok `mcpServers` dibackup ke private `local-config/claude.json.mcpServers.json`.
 - Kredensial OAuth Google dibackup ke private `local-config/google/`: `~/.mcp-google-sheets/` (Sheets MCP), `~/.google-slides-mcp/` (Slides MCP), `~/.config/funtoco-gdocs/` (script gdoc lama, tidak dipakai prompt mana pun), file `client_secret_…json`.
 - 4 session pinned tanpa backup sudah diekstrak: `nichiisheet` (【AGENT】ニチイ学館シート), `kyuujin` (【AGENT】求人Generative), `hikitsugi` (【PROJECT】引き継ぎシート), dan 【PROJECT】しえん-ちゃん → memory [[project-shien-chan-slack-agent]].
-- File `zairyucard` & `shoruikakunou` berasal dari **lampiran tiket Zendesk** → rencana: Claude ambil lampiran langsung via Zendesk API (token sudah di memory), jadi tidak bergantung folder Downloads.
+- `zairyucard` & `shoruikakunou` **tetap membaca dari folder Downloads** — user download manual dulu dari Zendesk. Keputusan user 2026-10-11: JANGAN diubah ke Zendesk API ([[feedback-keep-existing-workflow]]).
 
 **Why:** User mau kerja dari mana saja tanpa file lokal; PC 24 jam juga membuat scheduled task/routine bisa jalan terus.
 
