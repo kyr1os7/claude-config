@@ -92,31 +92,52 @@ Di dalam folder orang, cari subfolder `1.申請書類X回目` dengan angka X **t
 ### Step 4 — Tentukan Nama File & Folder Tujuan
 
 #### Format nama file
-Format dasar: `［書類名詳細］FULLNAME／呼び名.ext`
-- Gunakan ／ (full-width slash `／`), **bukan** `/`
+Format dasar: `［書類名詳細］FULLNAME / 呼び名.ext`
+- Gunakan `/` (half-width slash) **dengan spasi di kiri dan kanan**: `FULLNAME / 呼び名`
+- **BUKAN** full-width `／`, bukan tanpa spasi
 
 | Dokumen | Nama File | Format |
 |---------|-----------|--------|
-| 源泉徴収票 | `［X年分_源泉徴収票（金額円）］NAME／呼び名.pdf` | **Wajib ada nominal** |
-| 課税証明書 | `［X年度_課税証明書］NAME／呼び名.pdf` | - |
-| 納税証明書 | `［X年度_納税証明書］NAME／呼び名.pdf` | - |
-| 被保険者記録照会回答票 | `［被保険者記録照会回答票］NAME／呼び名.pdf` | - |
-| 被保険者記録照会（納付Ⅱ） | `［被保険者記録照会（納付Ⅱ）］NAME／呼び名.pdf` | - |
-| 被保険者記録照会（納付Ⅰ） | `［被保険者記録照会（納付Ⅰ）］NAME／呼び名.pdf` | - |
-| 被保険者記録照会（免除） | `［被保険者記録照会（免除）］NAME／呼び名.pdf` | pengganti 納付Ⅱ |
-| 証明写真 | `［証明写真］NAME／呼び名.jpg` | **Tetap JPG** |
-| 指定書 | `［指定書（更新の場合のみ）］NAME／呼び名.pdf` | - |
-| パスポート | `［パスポート］NAME／呼び名.pdf` | - |
-| 国民健康保険証 | `［国民健康保険証の写し］NAME／呼び名.pdf` | - |
-| 健康診断 | `［健康診断］NAME／呼び名.pdf` | - |
+| 源泉徴収票 | `［X年分_源泉徴収票（金額円）］NAME / 呼び名.pdf` | **Wajib ada nominal** |
+| 課税証明書 | `［X年度_課税証明書］NAME / 呼び名.pdf` | - |
+| 納税証明書 | `［X年度_納税証明書］NAME / 呼び名.pdf` | - |
+| 被保険者記録照会回答票 | `［被保険者記録照会回答票］NAME / 呼び名.pdf` | - |
+| 被保険者記録照会（納付Ⅱ） | `［被保険者記録照会（納付Ⅱ）］NAME / 呼び名.pdf` | - |
+| 被保険者記録照会（納付Ⅰ） | `［被保険者記録照会（納付Ⅰ）］NAME / 呼び名.pdf` | - |
+| 被保険者記録照会（免除） | `［被保険者記録照会（免除）］NAME / 呼び名.pdf` | pengganti 納付Ⅱ |
+| 証明写真 | `［証明写真］NAME / 呼び名.jpg` | **Tetap JPG** |
+| 指定書 | `［指定書］NAME / 呼び名.pdf` | - |
+| パスポート | `［パスポート］NAME / 呼び名.pdf` | - |
+| 国民健康保険証 | `［国民健康保険証の写し］NAME / 呼び名.pdf` | - |
+| 健康診断 | `［健康診断］NAME / 呼び名.pdf` | - |
+
+#### Struktur folder 申請書類 (berdasarkan X回目)
+
+**1回目:**
+```
+1. 履歴書/職務経歴書/内定通知書/
+2. 本人準備書類/   ← 源泉徴収票, 課税証明書, 納税証明書, 被保険者記録照会, 健康診断, 証明写真
+3. 企業確認用/
+4. スキャン/
+5. 在留カード/
+6. 協議会登録用書類/
+```
+
+**2回目以降:**
+```
+1. 企業確認用/
+2. 本人準備書類/   ← 源泉徴収票, 課税証明書, 納税証明書, 被保険者記録照会, 証明写真
+3. スキャン/
+4. 在留カード/
+```
 
 #### Folder tujuan per dokumen
 
 | Dokumen | 1回目 | 2回目以降 |
 |---------|-------|----------|
-| 源泉徴収票, 課税証明書, 納税証明書, 被保険者記録照会 | `4.本人準備書類/` | `2.本人準備書類/` |
-| 証明写真 | `5.スキャン/` | `3.スキャン/` |
-| 指定書, パスポート | `3.パスポート/` (atau `3.パスポート 指定書/`) | sama |
+| 源泉徴収票, 課税証明書, 納税証明書, 被保険者記録照会, 健康診断 | `2. 本人準備書類/` | `2. 本人準備書類/` |
+| 証明写真 | `2. 本人準備書類/` | `2. 本人準備書類/` |
+| 指定書, パスポート | `3. パスポート 指定書/` (root orang, bukan dalam申請書類) | sama |
 
 - Jika subfolder belum ada → **buat folder baru**
 - Jika nama subfolder 指定書 berbeda (spasi vs slash) → ikuti nama yang sudah ada di folder orang
@@ -137,7 +158,7 @@ Tunggu konfirmasi user sebelum lanjut eksekusi.
 
 **Upload file ke Google Drive (via MCP `create_file`):**
 - `parentId`: ID folder tujuan (dari Step 3 / Step 4)
-- `title`: nama file sesuai aturan Step 4 (pakai ／ full-width)
+- `title`: nama file sesuai aturan Step 4 (pakai ` / ` half-width dengan spasi)
 - `base64Content`: isi file di-encode base64
 - `contentMimeType`: `application/pdf` atau `image/jpeg` (証明写真)
 - `disableConversionToGoogleType: true` (jangan auto-convert ke Google Docs)
@@ -204,8 +225,8 @@ Jika user menyebut **"special case, tidak perlu copy ke google drive"**:
 
 1. **Konfirmasi dulu** path + nama file ke user **sebelum** eksekusi apapun
 2. **JANGAN HAPUS** file/folder di Google Drive maupun Downloads — biarkan duplikat
-3. **証明写真**: tetap JPG, simpan di folder スキャン (bukan 本人準備書類)
-4. **指定書**: simpan di folder `3.パスポート` (bukan 本人準備書類)
+3. **証明写真**: tetap JPG, simpan di folder `2. 本人準備書類` (bukan スキャン)
+4. **指定書**: simpan di folder `3.パスポート 指定書` di root folder orang (bukan dalam申請書類); nama file cukup `［指定書］` (bukan `指定書（更新の場合のみ）`)
 5. **源泉徴収票**: wajib cantumkan 支払金額 di nama file, contoh: `（3,273,434円）`
 6. **Folder search**: PE range folder dulu, baru 登録PE
 7. **Dropdown Kintone**: jika item tidak ada di dropdown → create row baru
