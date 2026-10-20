@@ -2,6 +2,8 @@
 
 Panduan setup automation Claude Code untuk staf Funtoco.
 
+> 💡 Pakai **Codex (ChatGPT)**, bukan Claude? Lihat [codex/SETUP_CODEX.md](codex/SETUP_CODEX.md).
+
 ---
 
 ## Prasyarat

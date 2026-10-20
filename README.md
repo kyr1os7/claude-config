@@ -13,6 +13,7 @@ claude-config/
 ├── hooks/
 │   ├── rtk-rewrite.sh  # RTK command rewrite hook
 │   └── rtk-wrapper.sh  # RTK wrapper for Bash tool
+├── codex/            # Versi Codex: AGENTS.md bootstrap + setup_codex.sh + SETUP_CODEX.md
 ├── memory/
 │   ├── MEMORY.md       # Memory index (auto-loaded by Claude)
 │   └── *.md            # Individual memory files (feedback, reference, etc.)
