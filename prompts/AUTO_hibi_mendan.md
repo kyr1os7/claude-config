@@ -134,13 +134,15 @@ Urutan kerja yang benar:
 - **MANUAL**: rangkum soudan dari bahasa Indonesia ke Jepang
 - Pilih `chu` (中項目) yang paling cocok dengan isi soudan
 
-### ⚠️ Gaya bahasa 内容 (語尾スタイル) — berlaku mulai 2026-07
+### ⚠️ Gaya bahasa 内容 (語尾スタイル) — berlaku mulai 2026-10-20
 
-Isi `notes` / `内容` **dibaca oleh pihak kaisha (client)**, jadi harus rapi & sopan tapi ringkas:
-- **HINDARI** `〜した。` (bentuk plain, terkesan datar/blak-blakan) **DAN** `です・ます`.
-- **Aksi yang sudah dilakukan Funtoco** → akhiri dengan **`〜済み`**: `案内済み`・`説明済み`・`確認済み`・`対応済み`・`サポート済み`.
-- **Kalimat konteks/situasi** → **体言止め** (noun-ending, tanpa です・ます): `〜について相談あり`・`〜について質問あり`・`〜の依頼あり`.
-- Contoh: `国民年金の免除手続きの方法について案内済み。記入が必要な書類と記入方法について説明済み。`
+Isi `notes` / `内容` **dibaca oleh pihak kaisha (client)**, jadi tulis dengan **gaya laporan (常体)** yang rapi dan ringkas:
+- **Akhir kalimat 常体 (〜した／〜している／〜である)**, divariasikan: `〜を説明した`・`〜を案内した`・`〜を確認した`・`〜と報告があった`・`〜予定である`・`〜とのことである`.
+- **DILARANG `です・ます`.**
+- **HINDARI 体言止め** (mis. `〜について相談あり。`・`〜の依頼あり。`) → ganti dengan kalimat lengkap: `〜について相談があった。`・`〜の依頼があった。`
+- **`〜済み` maksimal 1 kali per laporan**, hanya kalau memang paling pas. Jangan diulang di setiap kalimat.
+- Kalimat yang berurutan boleh digabung dengan `〜し、〜した` supaya tidak patah-patah.
+- Contoh: `本人より、国民年金の免除手続きについて相談があった。必要書類と記入方法を説明し、提出先は市役所である旨を案内した。書類は今週中に提出する予定とのことである。`
 - Record lama tidak perlu diubah, kecuali user minta spesifik.
 
 ### ⚠️ Format 内容 (【subject】prefix) — berlaku mulai 2026-07-13
@@ -150,8 +152,8 @@ Awali isi `notes` / `内容` dengan **judul dalam kurung 【】** lalu deskripsi
 **`【<subject>】<deskripsi>`**
 
 - **Subject** = 件名 ticket Zendesk (untuk `CEK`) atau ringkasan topik singkat (untuk `MANUAL`).
-- Deskripsi tetap pakai gaya `〜済み` / `体言止め` di atas.
-- Contoh: `【新在留カード受け取り】書類を送付いただき確認済み。申請受付番号について案内済み。`
+- Deskripsi tetap pakai gaya laporan di atas.
+- Contoh: `【新在留カード受け取り】本人から送付された書類を確認し、申請受付番号について案内した。`
 - Berlaku untuk `notes` (di dalam JSON) DAN field flat `tableStorageDaily_内容`.
 
 ### 対象四半期 Logic
