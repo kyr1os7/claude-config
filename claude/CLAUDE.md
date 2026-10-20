@@ -1,0 +1,35 @@
+<!-- FUNTOCO-AUTOMATION:START -->
+## Automation Bootstrap
+Jika user mengetik salah satu trigger word berikut di awal session,
+fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
+
+| Trigger Word | URL |
+|--------------|-----|
+| teikimendan | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_teiki_mendan.md |
+| hibimendan | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_hibi_mendan.md |
+| zairyucard | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_zairyu_card.md |
+| shoruikakunou | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_shorui_kakunou.md |
+| gyomuhoukoku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_laporan_harian.md |
+| mendanyoyaku | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_mendan_yoyaku.md |
+| visastatus | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_visa_status.md |
+| hikkoshi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_hikkoshi_calendar.md |
+| blastmessage | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_blast_message.md |
+| nichiisheet | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_nichii_sheet.md |
+| kyuujin | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_kyuujin.md |
+| hikitsugi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/PROJECT_hikitsugi.md |
+
+Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
+
+### Data Pribadi (opsional, isi sendiri)
+
+Kalau tidak mau ditanya tiap session, isi di bawah. File ini tersimpan di komputer sendiri saja — jangan di-share.
+
+```
+NAMA_LENGKAP    =
+NAMA_KANA       =
+EMAIL           =
+KINTONE_USER_ID =
+```
+
+> Password Kintone dan Zendesk token sebaiknya **tidak** ditulis di sini — ketik saja saat ditanya Step 0.
+<!-- FUNTOCO-AUTOMATION:END -->

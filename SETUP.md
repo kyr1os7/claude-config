@@ -2,7 +2,11 @@
 
 Panduan setup automation Claude Code untuk staf Funtoco.
 
-> 💡 Pakai **Codex (ChatGPT)**, bukan Claude? Lihat [codex/SETUP_CODEX.md](codex/SETUP_CODEX.md).
+> 💡 **Rekan kerja baru? Pakai panduan langkah-demi-langkah:**
+> - Claude (Mac): [claude/SETUP_CLAUDE.md](claude/SETUP_CLAUDE.md)
+> - Codex / ChatGPT (Mac): [codex/SETUP_CODEX.md](codex/SETUP_CODEX.md)
+>
+> Halaman ini berisi detail lanjutan (setup manual, Kintone MCP, dll).
 
 ---
 
