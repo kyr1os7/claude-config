@@ -1,116 +1,156 @@
-# Setup Funtoco Automation di Codex (ChatGPT)
+# Panduan Funtoco Automation di Codex (Mac)
 
-Panduan untuk rekan kerja yang memakai **Codex** (bukan Claude). Prompt automation-nya sama dengan versi Claude — hanya cara memasangnya yang beda.
+Panduan ini untuk rekan kerja yang memakai **Codex** (dari OpenAI / ChatGPT) di **Mac**.
+Waktu setup: **±10 menit, cukup sekali**.
 
-> ⚠️ Harus pakai **Codex** (app Codex / Codex CLI / ekstensi IDE). **ChatGPT chat biasa tidak bisa**, karena tidak bisa mengakses Kintone/Zendesk dari komputer Anda.
+Setelah selesai, Anda cukup mengetik satu kata di Codex (misalnya `hibimendan`), dan Codex akan mengerjakan automation-nya.
 
----
-
-## 1. Prasyarat
-
-- Codex terinstall dan sudah login dengan akun ChatGPT
-- `git` terinstall (cek: buka Terminal, ketik `git --version`)
-- Akun Funtoco: email `@funtoco.jp` + password Kintone
-- Untuk `hibimendan` / `blastmessage`: Zendesk API token (minta ke Sandy secara pribadi)
+> ⚠️ **Harus pakai app Codex, bukan ChatGPT biasa.** ChatGPT chat biasa tidak bisa mengakses Kintone dan Zendesk dari komputer Anda.
 
 ---
 
-## 2. Install (sekali saja, ±2 menit)
+## ✅ Siapkan dulu
 
-Buka **Terminal**, copy-paste perintah ini, lalu Enter:
+- [ ] Mac dengan koneksi internet
+- [ ] Akun ChatGPT (untuk login ke Codex)
+- [ ] Email Funtoco `@funtoco.jp` + password Kintone
+- [ ] *(Hanya untuk `hibimendan` / `blastmessage`)* Zendesk API token → minta ke Sandy lewat chat pribadi
+
+---
+
+## Langkah 1 — Install app Codex
+
+1. Download app **Codex** dari situs resmi OpenAI: https://openai.com/codex
+   (Kalau bingung, minta link ke Sandy.)
+2. Buka file yang terdownload, lalu drag ikon **Codex** ke folder **Applications**.
+3. Buka app Codex, lalu **login dengan akun ChatGPT** Anda.
+
+---
+
+## Langkah 2 — Buka Terminal
+
+Terminal adalah aplikasi bawaan Mac untuk mengetik perintah.
+
+1. Tekan **⌘ Command + Spasi** (membuka Spotlight)
+2. Ketik `Terminal`
+3. Tekan **Enter**
+
+Akan muncul jendela putih/hitam berisi teks. Biarkan terbuka.
+
+---
+
+## Langkah 3 — Jalankan perintah install
+
+**Copy** baris di bawah ini, **paste** ke Terminal (⌘ + V), lalu tekan **Enter**:
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/kyr1os7/claude-config/main/codex/setup_codex.sh)
 ```
 
-Script ini:
-1. Mengunduh semua prompt ke folder `~/funtoco-automation`
-2. Menambahkan daftar trigger word ke `~/.codex/AGENTS.md` (isi lama tidak dihapus, ada backup)
+**Berhasil kalau** muncul tulisan seperti ini di bagian akhir:
+
+```
+Bootstrap ditambahkan ke /Users/namaanda/.codex/AGENTS.md
+Selesai.
+```
+
+> 💡 **Muncul jendela "install command line developer tools"?**
+> Klik **Install**, tunggu sampai selesai (bisa 5–10 menit), lalu ulangi Langkah 3.
 
 ---
 
-## 3. Izin network
+## Langkah 4 — Izinkan Codex mengakses internet
 
-Automation memanggil API Kintone dan Zendesk lewat Python, jadi Codex perlu akses internet saat menjalankan perintah.
+Automation perlu internet untuk mengambil dan menyimpan data di Kintone/Zendesk.
 
-**Cara paling gampang (app Codex):** saat Codex minta izin menjalankan perintah yang butuh internet, pilih **Allow / Approve**. Kalau sering ditanya, ubah mode izin (permission) session ke mode yang mengizinkan akses network.
+Masih di Terminal, **copy-paste** baris ini lalu **Enter**:
 
-**Cara permanen (opsional):** buka file `~/.codex/config.toml` lalu tambahkan:
-
-```toml
-sandbox_mode = "workspace-write"
-
-[sandbox_workspace_write]
-network_access = true
+```bash
+grep -q '^\[sandbox_workspace_write\]' ~/.codex/config.toml 2>/dev/null || printf '\n[sandbox_workspace_write]\nnetwork_access = true\n' >> ~/.codex/config.toml
 ```
 
-Simpan, lalu tutup dan buka lagi Codex.
+Tidak akan muncul tulisan apa-apa, dan itu normal.
+
+Lalu **tutup app Codex sepenuhnya** (⌘ + Q) dan buka lagi.
+
+> 💡 Kalau nanti Codex tetap bertanya *"Allow this command?"* / minta izin menjalankan perintah, pilih **Allow / Approve**.
 
 ---
 
-## 4. Cara pakai — apa yang diketik di Codex
+## Langkah 5 — Tes pertama
 
-Buka session/chat Codex baru, lalu **ketik trigger word saja**, contoh:
+1. Di app Codex, buka **chat/session baru**
+2. Ketik:
+   ```
+   automation
+   ```
+   → Codex akan menampilkan daftar semua trigger word. **Artinya setup berhasil 🎉**
+3. Coba automation yang aman (hanya membaca data, tidak mengubah apa pun):
+   ```
+   visastatus
+   ```
+   Codex akan menanyakan email dan password Kintone Anda. Setelah diisi, ketik:
+   ```
+   cek
+   ```
+   → Codex menampilkan perubahan status visa untuk record Anda.
 
-```
-hibimendan
-```
+Kalau langkah ini jalan, Anda siap memakai semua automation.
 
-Codex akan membaca prompt-nya, menanyakan data Anda (Step 0), lalu siap menerima perintah. Setelah itu pakai perintah internal seperti biasa, misalnya:
+---
 
-```
-CEK
-```
+## 📋 Cara pakai sehari-hari
 
-Ketik `automation` untuk melihat semua trigger word.
+**Selalu mulai dari session baru**, lalu ketik trigger word-nya. Setelah itu ikuti perintah yang diminta Codex (misalnya `CEK`, `MENDAN`, `laporan hari ini`).
 
-| Ketik | Fungsi | Jalan di Codex? |
+| Ketik | Untuk apa | Status |
 |---|---|---|
-| `hibimendan` | 日々面談 — Zendesk / manual → Kintone | ✅ |
-| `visastatus` | Cek perubahan status visa App 50 | ✅ |
-| `nichiisheet` | Laporan ニチイ学館シート (teks saja) | ✅ |
-| `kyuujin` | Teks lowongan + hitung 手取り | ✅ |
-| `teikimendan` | 定期面談記録 → Kintone | 🟡 perlu Google Drive (lihat bagian 5) |
-| `zairyucard` | 在留カード → Kintone + Drive | 🟡 perlu Google Drive |
-| `shoruikakunou` | 書類格納 → Drive + Kintone | 🟡 perlu Google Drive |
-| `gyomuhoukoku` | 業務報告 harian | 🟡 perlu Google Calendar + Gmail |
-| `mendanyoyaku` | Update tanggal dari email reservasi | 🟡 perlu Gmail |
-| `hikkoshi` | Memo Calendar + rute mobil | 🟡 perlu Google Calendar |
-| `hikitsugi` | Google Sheet serah-terima | 🟡 perlu Google Sheets MCP |
-| `blastmessage` | Blast FB / LINE lewat browser | ⚠️ eksperimental — selalu cek sebelum kirim |
+| `hibimendan` | 日々面談 — dari Zendesk / manual → Kintone | ✅ Bisa |
+| `visastatus` | Cek perubahan status visa (App 50) | ✅ Bisa |
+| `nichiisheet` | Laporan ニチイ学館シート (teks Jepang) | ✅ Bisa |
+| `kyuujin` | Teks lowongan + hitung 手取り | ✅ Bisa |
+| `teikimendan` | 定期面談記録 → Kintone | 🟡 Butuh Google Drive |
+| `zairyucard` | Update 在留カード → Kintone + Drive | 🟡 Butuh Google Drive |
+| `shoruikakunou` | 書類格納 — rename & simpan dokumen | 🟡 Butuh Google Drive |
+| `gyomuhoukoku` | 業務報告 harian + draft email | 🟡 Butuh Google Calendar + Gmail |
+| `mendanyoyaku` | Update tanggal dari email reservasi | 🟡 Butuh Gmail |
+| `hikkoshi` | Memo Calendar + rute mobil 引越し | 🟡 Butuh Google Calendar |
+| `hikitsugi` | Google Sheet 引き継ぎ | 🟡 Butuh setup khusus (hubungi Sandy) |
+| `blastmessage` | Kirim pesan massal FB / LINE | ⚠️ Percobaan — cek isi sebelum kirim |
+| `automation` | Lihat semua daftar di atas | ✅ |
 
-✅ = cukup Kintone/Zendesk (Python), langsung bisa.
-🟡 = butuh koneksi Google. Kalau koneksinya tidak ada, Codex akan mengerjakan bagian Kintone-nya dan memberi tahu langkah mana yang harus Anda lakukan manual.
-
----
-
-## 5. Koneksi Google (untuk yang 🟡)
-
-Di app Codex, cek menu **Settings → Plugins / Apps / Connectors**. Kalau tersedia **Google Drive, Gmail, Google Calendar**, sambungkan dengan akun `@funtoco.jp` Anda.
-
-Kalau tidak ada di daftar, automation 🟡 tetap bisa dipakai sebagian (bagian Kintone), dan sisanya manual (misalnya upload file ke Drive sendiri).
-
-Untuk `hikitsugi` (Google Sheets) perlu MCP server khusus — hubungi Sandy untuk setup-nya.
+**✅ Bisa** — langsung jalan.
+**🟡 Butuh Google** — di app Codex buka **Settings → Plugins / Apps / Connectors**. Kalau ada Google Drive / Gmail / Google Calendar, sambungkan dengan akun `@funtoco.jp`. Kalau tidak ada, Codex tetap mengerjakan bagian Kintone-nya dan memberi tahu langkah mana yang perlu Anda kerjakan manual.
 
 ---
 
-## 6. Simpan data supaya tidak ditanya terus (opsional)
+## 💾 (Opsional) Supaya tidak ditanya data terus
 
-Buka `~/.codex/AGENTS.md`, cari bagian **Data Pribadi**, isi nama, email, dan KINTONE_USER_ID.
+Di Terminal, ketik ini lalu **Enter**:
 
-> Jangan tulis **password** atau **token** di file — ketik saja saat ditanya.
+```bash
+open -e ~/.codex/AGENTS.md
+```
+
+File akan terbuka di TextEdit. Scroll ke bagian **Data Pribadi**, isi nama, email, dan `KINTONE_USER_ID`, lalu simpan (⌘ + S).
+
+> 🔒 **Jangan tulis password atau token di file ini.** Ketik saja saat Codex bertanya.
+> `KINTONE_USER_ID` berupa **angka** (bukan email). Tanyakan ke admin Kintone.
 
 ---
 
-## 7. Update
+## 🔄 Update
 
-Prompt otomatis di-update (`git pull`) setiap kali Anda mengetik trigger word. Tidak perlu install ulang.
+Tidak perlu apa-apa. Setiap kali Anda mengetik trigger word, Codex otomatis mengambil versi prompt terbaru.
 
-## Troubleshooting
+---
+
+## 🆘 Kalau ada masalah
 
 | Masalah | Solusi |
 |---|---|
-| Codex tidak mengenali trigger word | Pastikan `~/.codex/AGENTS.md` berisi blok `FUNTOCO-AUTOMATION`. Jalankan ulang script di bagian 2, lalu buka session baru |
-| Error koneksi ke Kintone/Zendesk | Izin network belum aktif — lihat bagian 3 |
-| Hasil KPI 日々面談 = 0 | `KINTONE_USER_ID` salah — harus **angka**, bukan email. Tanya admin Kintone |
-| `git: command not found` | Install Xcode Command Line Tools: jalankan `xcode-select --install` di Terminal |
+| Ketik `automation` tapi Codex tidak mengerti | Tutup Codex (⌘ + Q), buka lagi, lalu mulai **session baru**. Kalau masih gagal, ulangi Langkah 3 |
+| Muncul error koneksi / network / Kintone | Ulangi Langkah 4, tutup lalu buka lagi Codex. Kalau ditanya izin, pilih **Allow** |
+| `command not found: git` | Jalankan `xcode-select --install` di Terminal, klik **Install**, lalu ulangi Langkah 3 |
+| Hasil KPI 日々面談 = 0 | `KINTONE_USER_ID` salah. Harus angka, tanyakan ke admin Kintone |
+| Masih bingung | Screenshot layar Anda dan kirim ke Sandy |

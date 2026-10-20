@@ -37,4 +37,4 @@ else
 fi
 
 echo ""
-echo "Selesai. Langkah berikutnya: baca $REPO_DIR/codex/SETUP_CODEX.md (bagian 'Izin network')."
+echo "Selesai. Lanjut ke Langkah 4 di panduan: https://github.com/kyr1os7/claude-config/blob/main/codex/SETUP_CODEX.md"
