@@ -132,7 +132,9 @@ Urutan kerja yang benar:
 - Tulis dalam **bahasa Jepang**
 - **CEK (dari Zendesk)**: rangkum → konteks ticket → isi chat penting → hasil/tindakan yang diambil
 - **MANUAL**: rangkum soudan dari bahasa Indonesia ke Jepang
-- Pilih `chu` (中項目) yang paling cocok dengan isi soudan
+- Pilih `chu` (中項目) yang paling cocok dengan isi soudan, **hanya dari daftar kategori tetap ini** (jangan pakai 件名 ticket, jangan bikin nama kategori baru atau variasi penulisan seperti 「ビザ更新対応」「病院対応」):
+  `手続き関連`／`生活支援（居住）`／`生活支援（引越し）`／`生活支援（手続き）`／`生活支援（医療）`／`キャリア関連`／`給与関連`／`退職相談`／`仕事関連（労働条件）`／`仕事関連（業務内容）`／`ビザ申請__更新__在留カード受け取り`／`ビザ申請__更新__書類の確認`／`SIMカード・インターネット対応`／`郵便対応`／`その他`
+  (Daftar ini diambil dari record App 98 Sandy, 2026-10-23. Sama dengan skill shien-chan.)
 
 ### ⚠️ Gaya bahasa 内容 (語尾スタイル) — berlaku mulai 2026-10-20
 
