@@ -51,7 +51,6 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | blastmessage | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_blast_message.md |
 | nichiisheet | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_nichii_sheet.md |
 | kyuujin | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_kyuujin.md |
-| hikitsugi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/PROJECT_hikitsugi.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
 ```
@@ -81,7 +80,6 @@ Buka session Claude Code baru, ketik trigger word sesuai kebutuhan:
 | `blastmessage` | Blast Message — pesan massal ke pekerja via FB Business Suite / LINE OA (Chrome) |
 | `nichiisheet` | ニチイ学館シート — ubah catatan/chat jadi laporan 相談・報告・依頼 (Jepang) |
 | `kyuujin` | 求人 — teks lowongan + perhitungan 手取り dari Kintone App 16 / web perusahaan |
-| `hikitsugi` | 引き継ぎシート — tambah/urutkan 支援者 (WO-xxxx) di Google Sheet serah-terima |
 | `automation` | Tampilkan semua trigger word yang tersedia |
 
 **Claude akan otomatis fetch instruksi dari GitHub, lalu siap menerima perintah.**

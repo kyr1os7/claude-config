@@ -33,7 +33,6 @@ Kalau user mengetik salah satu trigger word di bawah (biasanya di awal session):
 | blastmessage | prompts/AUTO_blast_message.md | Blast Message — FB Business Suite / LINE OA (browser) ⚠️ eksperimental di Codex |
 | nichiisheet | prompts/AGENT_nichii_sheet.md | ニチイ学館シート — laporan 相談・報告・依頼 (Jepang) |
 | kyuujin | prompts/AGENT_kyuujin.md | 求人 — teks lowongan + perhitungan 手取り |
-| hikitsugi | prompts/PROJECT_hikitsugi.md | 引き継ぎシート — Google Sheet serah-terima |
 
 Kalau user mengetik `automation`, tampilkan tabel di atas (trigger word + fungsi).
 

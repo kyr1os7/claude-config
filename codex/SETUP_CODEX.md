@@ -115,7 +115,6 @@ Kalau langkah ini jalan, Anda siap memakai semua automation.
 | `gyomuhoukoku` | 業務報告 harian + draft email | 🟡 Butuh Google Calendar + Gmail |
 | `mendanyoyaku` | Update tanggal dari email reservasi | 🟡 Butuh Gmail |
 | `hikkoshi` | Memo Calendar + rute mobil 引越し | 🟡 Butuh Google Calendar |
-| `hikitsugi` | Google Sheet 引き継ぎ | 🟡 Butuh setup khusus (hubungi Sandy) |
 | `blastmessage` | Kirim pesan massal FB / LINE | ⚠️ Percobaan — cek isi sebelum kirim |
 | `automation` | Lihat semua daftar di atas | ✅ |
 

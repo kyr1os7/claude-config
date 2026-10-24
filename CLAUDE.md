@@ -22,6 +22,5 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | blastmessage | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_blast_message.md |
 | nichiisheet | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_nichii_sheet.md |
 | kyuujin | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_kyuujin.md |
-| hikitsugi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/PROJECT_hikitsugi.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.

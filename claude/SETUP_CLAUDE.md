@@ -117,7 +117,6 @@ Kalau langkah ini jalan, Anda siap memakai semua automation.
 | `gyomuhoukoku` | 業務報告 harian + draft email | Google Calendar + Gmail |
 | `mendanyoyaku` | Update tanggal dari email reservasi | Gmail |
 | `hikkoshi` | Memo Calendar + rute mobil 引越し | Google Calendar |
-| `hikitsugi` | Google Sheet 引き継ぎ | Setup khusus (hubungi Sandy) |
 | `blastmessage` | Kirim pesan massal FB / LINE | Ekstensi Claude in Chrome (hubungi Sandy) |
 | `automation` | Lihat semua daftar di atas | — |
 
