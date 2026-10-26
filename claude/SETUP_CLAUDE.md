@@ -71,7 +71,7 @@ Beberapa automation perlu mengakses Google akun `@funtoco.jp` Anda.
    - **Google Calendar**
 4. Ikuti layar login Google sampai selesai.
 
-> 💡 Hanya butuh `hibimendan` / `visastatus` / `nichiisheet` / `kyuujin`? Langkah ini boleh dilewati dulu.
+> 💡 Hanya butuh `hibimendan` / `visastatus` / `kyuujin`? Langkah ini boleh dilewati dulu.
 
 ---
 
@@ -109,7 +109,6 @@ Kalau langkah ini jalan, Anda siap memakai semua automation.
 |---|---|---|
 | `hibimendan` | 日々面談 — dari Zendesk / manual → Kintone | Zendesk token |
 | `visastatus` | Cek perubahan status visa (App 50) | — |
-| `nichiisheet` | Laporan ニチイ学館シート (teks Jepang) | — |
 | `kyuujin` | Teks lowongan + hitung 手取り | — |
 | `teikimendan` | 定期面談記録 → Kintone | Google Drive |
 | `zairyucard` | Update 在留カード → Kintone + Drive | Google Drive |

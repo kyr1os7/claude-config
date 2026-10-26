@@ -107,7 +107,6 @@ Kalau langkah ini jalan, Anda siap memakai semua automation.
 |---|---|---|
 | `hibimendan` | 日々面談 — dari Zendesk / manual → Kintone | ✅ Bisa |
 | `visastatus` | Cek perubahan status visa (App 50) | ✅ Bisa |
-| `nichiisheet` | Laporan ニチイ学館シート (teks Jepang) | ✅ Bisa |
 | `kyuujin` | Teks lowongan + hitung 手取り | ✅ Bisa |
 | `teikimendan` | 定期面談記録 → Kintone | 🟡 Butuh Google Drive |
 | `zairyucard` | Update 在留カード → Kintone + Drive | 🟡 Butuh Google Drive |

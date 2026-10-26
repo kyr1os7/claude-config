@@ -31,7 +31,6 @@ Kalau user mengetik salah satu trigger word di bawah (biasanya di awal session):
 | visastatus | prompts/AUTO_visa_status.md | ビザステータス — cek perubahan status visa App 50 |
 | hikkoshi | prompts/AUTO_hikkoshi_calendar.md | 引越対応 — memo Google Calendar + rute mobil (App 264) |
 | blastmessage | prompts/AUTO_blast_message.md | Blast Message — FB Business Suite / LINE OA (browser) ⚠️ eksperimental di Codex |
-| nichiisheet | prompts/AGENT_nichii_sheet.md | ニチイ学館シート — laporan 相談・報告・依頼 (Jepang) |
 | kyuujin | prompts/AGENT_kyuujin.md | 求人 — teks lowongan + perhitungan 手取り |
 
 Kalau user mengetik `automation`, tampilkan tabel di atas (trigger word + fungsi).

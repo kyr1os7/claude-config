@@ -14,7 +14,6 @@ fetch URL-nya terlebih dahulu lalu ikuti semua instruksi di file tersebut:
 | visastatus | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_visa_status.md |
 | hikkoshi | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_hikkoshi_calendar.md |
 | blastmessage | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AUTO_blast_message.md |
-| nichiisheet | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_nichii_sheet.md |
 | kyuujin | https://raw.githubusercontent.com/kyr1os7/claude-config/main/prompts/AGENT_kyuujin.md |
 
 Jika user mengetik `automation`, tampilkan list trigger word di atas beserta fungsinya.
