@@ -20,13 +20,18 @@ Trigger **`cek`** (atau `CEK`): cek perubahan ステータス di Kintone app50 (
 
 **Format tabel (header full Jepang):** 名前 · 新ステータス · 変更日時（JST） · ステータス期限 · リンク. Sort by 変更日時 desc. Deadline DATETIME `T02:00:00Z`=11:00 JST, `T00:00:00Z`=09:00 JST.
 
-**⭐ "Bola di Sandy"** (mulai 2026-07-08): kalau status SAAT INI salah satu dari 4 ini, beri ⭐ (butuh aksi Sandy):
+**⭐ "Bola di Sandy"** (mulai 2026-07-08; 2026-10-21 +ビザ申請準備中; 2026-11-11 status Kintone berubah → sekarang 7 status, versi Tethys Atlas sudah diperbarui & di-deploy): kalau status SAAT INI salah satu dari ini, beri ⭐ (butuh aksi Sandy):
 - 支援_更新案内・人材情報更新待ち
 - 支援_申請人サイン待ち
-- 本人案内待ち
+- ビザ申請準備中
+- 納付案内待ち (BARU, tombol 納付支払い案内済み)
+- 支払い確認待ち (BARU, tombol 支払い確認済み; isi 納付日 di RAKUVISA dulu)
+- 新在留カード受け取り案内待ち (= 本人案内待ち lama, di-rename; tombol 受け取り案内済み)
 - 在留カード情報待ち
 
-Status lain tetap dilaporkan tanpa ⭐ (bola di tim lain). Catatan: 本人案内待ち & 在留カード情報待ち & 支援_更新案内 TIDAK punya stempel Time Line → judgment "berubah dalam window" pakai kombinasi 更新日時 + deadline baru, tandai "要確認" kalau tak bisa dipastikan.
+**Perubahan 2026-11-11** (kasus 認定申請以外 dgn tanggal申請 ≥ 2026/10/1): 申請中 →(許可確認済み)→ 納付通知待ち [otomatis/tunggu 入管, BUKAN bola Sandy] →(納付通知受領済み)→ 納付案内待ち →(納付支払い案内済み)→ 支払い確認待ち →(支払い確認済み)→ 新在留カード受け取り案内待ち →(受け取り案内済み)→ 在留カード情報待ち → 許可. Nama `本人案内待ち` sudah TIDAK ADA di Kintone: query yg memakainya error http_400 (opsi tidak ditemukan pada field ステータス). 3 status baru tak punya stempel Time Line (deteksi perubahan via 更新日時 + deadline). Cek daftar status terkini: `/k/v1/app/status.json?app=50`.
+
+Status lain tetap dilaporkan tanpa ⭐ (bola di tim lain). Catatan: 新在留カード受け取り案内待ち & 納付案内待ち & 支払い確認待ち & 在留カード情報待ち & 支援_更新案内 TIDAK punya stempel Time Line → judgment "berubah dalam window" pakai kombinasi 更新日時 + deadline baru, tandai "要確認" kalau tak bisa dipastikan.
 
 **Output tiap `cek` = 2 bagian** (mulai 2026-07-27):
 1. Perubahan status di window (hari ini/kemarin), format tabel di atas.
@@ -35,3 +40,4 @@ Status lain tetap dilaporkan tanpa ⭐ (bola di tim lain). Catatan: 本人案内
 **Bahasa**: narasi/penjelasan `cek` pakai Bahasa Indonesia; nama status, header tabel, & isi Kintone tetap Jepang.
 
 Terkait: [[feedback_japan_timezone]] [[reference_kintone_apps]] [[feedback_bahasa_indonesia]]
+- 2026-11-04 visastatus: tanda 🔴 lewat deadline / 🟡 hari ini-besok / 🟢 nanti / ⚪ tanpa deadline di depan nama tiap kartu (kintone_tool._visa_report, sesuai aturan lama cek app50). Backup kintone_tool.py.bak-pre-dot, restart Office ke-13.
