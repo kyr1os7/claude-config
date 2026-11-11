@@ -20,10 +20,9 @@ Trigger **`cek`** (atau `CEK`): cek perubahan ステータス di Kintone app50 (
 
 **Format tabel (header full Jepang):** 名前 · 新ステータス · 変更日時（JST） · ステータス期限 · リンク. Sort by 変更日時 desc. Deadline DATETIME `T02:00:00Z`=11:00 JST, `T00:00:00Z`=09:00 JST.
 
-**⭐ "Bola di Sandy"** (mulai 2026-07-08; 2026-10-21 +ビザ申請準備中; 2026-11-11 status Kintone berubah → sekarang 7 status, versi Tethys Atlas sudah diperbarui & di-deploy): kalau status SAAT INI salah satu dari ini, beri ⭐ (butuh aksi Sandy):
+**⭐ "Bola di Sandy"** (mulai 2026-07-08; 2026-10-21 +ビザ申請準備中; 2026-11-11 status Kintone berubah → 2026-11-12 ビザ申請準備中 DIKELUARKAN atas permintaan Sandy → sekarang 6 status, versi Tethys Atlas sudah diperbarui & di-deploy): kalau status SAAT INI salah satu dari ini, beri ⭐ (butuh aksi Sandy):
 - 支援_更新案内・人材情報更新待ち
 - 支援_申請人サイン待ち
-- ビザ申請準備中
 - 納付案内待ち (BARU, tombol 納付支払い案内済み)
 - 支払い確認待ち (BARU, tombol 支払い確認済み; isi 納付日 di RAKUVISA dulu)
 - 新在留カード受け取り案内待ち (= 本人案内待ち lama, di-rename; tombol 受け取り案内済み)

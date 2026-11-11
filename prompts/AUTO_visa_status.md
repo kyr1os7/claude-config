@@ -63,8 +63,8 @@ Setiap user ketik **`cek`**, jalankan workflow di bawah.
 
 > Daftar ini bisa berubah. Kalau ragu, ambil grup `Status_Time_Line` via form fields (`/k/v1/app/form/fields.json?app=50`) untuk daftar lengkap field DATE-nya.
 
-### Status "bola di user" (⭐, update 2026-11-11)
-Status saat ini yang butuh aksi 支援担当: `支援_更新案内・人材情報更新待ち`, `支援_申請人サイン待ち`, `ビザ申請準備中`, `納付案内待ち`, `支払い確認待ち`, `新在留カード受け取り案内待ち`, `在留カード情報待ち`.
+### Status "bola di user" (⭐, update 2026-11-11; ビザ申請準備中 dikeluarkan 2026-11-12 atas permintaan Sandy)
+Status saat ini yang butuh aksi 支援担当: `支援_更新案内・人材情報更新待ち`, `支援_申請人サイン待ち`, `納付案内待ち`, `支払い確認待ち`, `新在留カード受け取り案内待ち`, `在留カード情報待ち`.
 (`本人案内待ち` sudah di-rename jadi `新在留カード受け取り案内待ち`; `納付通知待ち` otomatis/tunggu 入管, bukan bola user.) Jangan hardcode nama status di query tanpa cek `/k/v1/app/status.json?app=50` — nama yang tidak ada membuat Kintone menjawab http_400.
 
 ---
