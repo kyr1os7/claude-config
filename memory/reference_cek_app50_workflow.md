@@ -29,7 +29,7 @@ Trigger **`cek`** (atau `CEK`): cek perubahan ステータス di Kintone app50 (
 - 新在留カード受け取り案内待ち (= 本人案内待ち lama, di-rename; tombol 受け取り案内済み)
 - 在留カード情報待ち
 
-**Perubahan 2026-11-11** (kasus 認定申請以外 dgn tanggal申請 ≥ 2026/10/1): 申請中 →(許可確認済み)→ 納付通知待ち [otomatis/tunggu 入管, BUKAN bola Sandy] →(納付通知受領済み)→ 納付案内待ち →(納付支払い案内済み)→ 支払い確認待ち →(支払い確認済み)→ 新在留カード受け取り案内待ち →(受け取り案内済み)→ 在留カード情報待ち → 許可. Nama `本人案内待ち` sudah TIDAK ADA di Kintone: query yg memakainya error http_400 (opsi tidak ditemukan pada field ステータス). 3 status baru tak punya stempel Time Line (deteksi perubahan via 更新日時 + deadline). Cek daftar status terkini: `/k/v1/app/status.json?app=50`.
+**Perubahan 2026-11-11** (kasus 認定申請以外 dgn tanggal申請 ≥ 2026/10/1): 申請中 →(許可確認済み)→ 納付通知待ち [otomatis/tunggu 入管, BUKAN bola Sandy] →(納付通知受領済み)→ 納付案内待ち →(納付支払い案内済み)→ 支払い確認待ち →(支払い確認済み)→ 新在留カード受け取り案内待ち →(受け取り案内済み)→ 在留カード情報待ち → 許可. Nama `本人案内待ち` sudah TIDAK ADA di Kintone: query yg memakainya error http_400 (opsi tidak ditemukan pada field ステータス). 3 status baru tak punya stempel Time Line → Atlas (kintone_tool.py VISA_NO_STAMP_STATUSES) menganggapnya "berubah" jika 更新日時 hari ini/kemarin, ditandai "(perkiraan, dari 更新日時)" (pilihan Sandy 2026-11-11, tanpa minta admin). Cek daftar status terkini: `/k/v1/app/status.json?app=50`.
 
 Status lain tetap dilaporkan tanpa ⭐ (bola di tim lain). Catatan: 新在留カード受け取り案内待ち & 納付案内待ち & 支払い確認待ち & 在留カード情報待ち & 支援_更新案内 TIDAK punya stempel Time Line → judgment "berubah dalam window" pakai kombinasi 更新日時 + deadline baru, tandai "要確認" kalau tak bisa dipastikan.
 
