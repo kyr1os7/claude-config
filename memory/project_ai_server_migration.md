@@ -18,7 +18,7 @@ Sandy berencana memindahkan semua kerja Claude ke **1 PC yang menyala 24 jam** d
 
 ## Temuan penting saat persiapan
 - **Konfigurasi MCP yang aktif ada di `~/.claude.json`** (kintone, google-slides, google-sheets) — BUKAN `~/.claude/mcp.json` (file lama, tidak dibaca Claude Code). Blok `mcpServers` dibackup ke private `local-config/claude.json.mcpServers.json`.
-- Kredensial OAuth Google dibackup ke private `local-config/google/`: `~/.mcp-google-sheets/` (Sheets MCP), `~/.google-slides-mcp/` (Slides MCP), `~/.config/funtoco-gdocs/` (script gdoc lama, tidak dipakai prompt mana pun), file `client_secret_…json`.
+- Kredensial OAuth Google dibackup ke private `local-config/google/`: `~/.mcp-google-sheets/` (Sheets MCP), `~/.google-slides-mcp/` (Slides MCP), `~/.config/funtoco-gdocs/` (script gdoc lama, tidak dipakai prompt mana pun), file `client_secret_…json`. **Usang sejak 2026-11-18** (project Sandyfuntocodocs terhapus; kini tethys-office, lihat [[reference-google-slides-mcp]]).
 - 2 session pinned tanpa backup sudah diekstrak: `kyuujin` (【AGENT】求人Generative), dan 【PROJECT】しえん-ちゃん → memory [[project-shien-chan-slack-agent]].
 - `zairyucard` & `shoruikakunou` **tetap membaca dari folder Downloads** — user download manual dulu dari Zendesk. Keputusan user 2026-10-11: JANGAN diubah ke Zendesk API ([[feedback-keep-existing-workflow]]).
 

@@ -5,7 +5,7 @@
 - [Company name aliases](reference_company_name_aliases.md) — nama kaisha di form booking (Jisekai→医療法人社団慈誠会 dll) harus dikonversi ke nama resmi di laporan
 - [Funtoco terminology](reference_funtoco_terminology.md) — 支援者 = pekerja asing yang didampingi (kebalikan arti umum); jangan dikoreksi jadi 対象者
 - [社内AI勉強会 seri 3 sesi](project_ai_benkyoukai.md) — Sandy jadi pembicara; sesi 1 (2026-07-30) deck selesai di ~/Claude/benkyoukai-ai, sesi 2 & 3 menyusul
-- [Google Slides MCP](reference_google_slides_mcp.md) — connector terpasang & terautentikasi; token, jebakan setup, dan batasan get_slide/update_text
+- [Google Slides+Sheets MCP](reference_google_slides_mcp.md) — project tethys-office (client hyperion-mcp) sejak 2026-11-18; re-auth `bin/google-mcp-auth`; batasan get_slide/update_text
 - [Google Drive naming convention](reference_dropbox_naming.md) — 書類格納 rules for file naming and folder structure in Google Drive (在留カード, 申請書類, etc.)
 - [Cloud storage no overwrite](feedback_dropbox_no_overwrite.md) — NEVER delete or overwrite files in Google Drive/Dropbox, allow duplicates
 - [Kintone record link](feedback_kintone_link.md) — Always provide Kintone link (https://funtoco.cybozu.com/k/50/show#record=ID) at end of each task
